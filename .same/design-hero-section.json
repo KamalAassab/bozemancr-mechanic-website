@@ -1,0 +1,310 @@
+```json
+{
+  "design_system": {
+    "brand_identity": {
+      "name": "Innovative Motorsports",
+      "style": "High-performance automotive, aggressive, modern",
+      "tone": "Bold, technical, premium"
+    },
+    "color_palette": {
+      "primary": {
+        "brand_red": "#FF0033",
+        "description": "Vibrant red used for primary branding, CTAs, and highlights"
+      },
+      "neutral": {
+        "black": "#000000",
+        "dark_gray": "#1a1a1a",
+        "white": "#FFFFFF",
+        "description": "Dark backgrounds with white text for high contrast"
+      },
+      "accents": {
+        "text_red": "#FF0033",
+        "icon_red": "#FF0033"
+      }
+    },
+    "typography": {
+      "primary_font": {
+        "family": "Sans-serif, bold/heavy weight",
+        "characteristics": "Condensed, impactful, uppercase for headers"
+      },
+      "heading_styles": {
+        "hero_title": {
+          "weight": "Heavy/Black (800-900)",
+          "case": "UPPERCASE",
+          "color": "brand_red",
+          "style": "Italic/slanted for main word",
+          "size": "Very large, dominant"
+        },
+        "hero_subtitle": {
+          "weight": "Bold (700)",
+          "case": "UPPERCASE",
+          "color": "white",
+          "style": "Italic/slanted",
+          "size": "Large, secondary to main title"
+        },
+        "section_headings": {
+          "weight": "Bold (700)",
+          "case": "UPPERCASE",
+          "color": "white or brand_red",
+          "style": "Italic for emphasis"
+        },
+        "product_titles": {
+          "weight": "Bold (700)",
+          "case": "UPPERCASE",
+          "color": "black",
+          "style": "Italic/slanted"
+        }
+      },
+      "body_text": {
+        "weight": "Regular to Medium (400-500)",
+        "case": "Sentence case",
+        "color": "white on dark backgrounds, dark on light backgrounds",
+        "size": "Medium, readable"
+      },
+      "taglines": {
+        "style": "Regular weight, professional tone",
+        "examples": "Premiere European Automotive Specialist"
+      }
+    },
+    "layout_structure": {
+      "navbar": {
+        "position": "Fixed top, full width",
+        "background": "Black with transparency or solid black",
+        "height": "Compact (~60-80px)",
+        "layout": "Horizontal flex/grid",
+        "elements": {
+          "logo": {
+            "position": "Left aligned",
+            "style": "Brand wordmark with checkered flag icon"
+          },
+          "navigation": {
+            "position": "Center or right",
+            "items": [
+              {
+                "type": "dropdown",
+                "label": "PRODUCTS",
+                "indicator": "Down arrow icon"
+              },
+              {
+                "type": "dropdown",
+                "label": "SERVICES",
+                "indicator": "Down arrow icon"
+              },
+              {
+                "type": "link",
+                "label": "ABOUT"
+              }
+            ],
+            "style": {
+              "font_weight": "Bold",
+              "case": "UPPERCASE",
+              "color": "white",
+              "hover_state": "brand_red or underline"
+            }
+          },
+          "contact_icons": {
+            "position": "Far right",
+            "icons": ["phone", "email", "location"],
+            "color": "brand_red",
+            "style": "Simple, outlined icons"
+          }
+        }
+      },
+      "hero_section": {
+        "background": "Dark automotive imagery (blurred, low opacity)",
+        "overlay": "Dark gradient or opacity layer",
+        "content_alignment": "Left aligned",
+        "vertical_spacing": "Generous padding (100-150px top/bottom)",
+        "elements": {
+          "main_heading": {
+            "structure": "Two lines - brand word in red, descriptor in white",
+            "example": "INNOVATIVE (red) + MOTORSPORTS (white)"
+          },
+          "tagline": {
+            "position": "Below heading",
+            "style": "Subtle, smaller text"
+          },
+          "cta_button": {
+            "style": "Solid brand_red background",
+            "text": "White, uppercase, bold",
+            "shape": "Rectangular with slight angle/skew",
+            "text_example": "Free Quotes! Call Now",
+            "hover": "Darker red or scale effect"
+          },
+          "location_indicator": {
+            "position": "Center or lower section",
+            "icon": "Location pin in brand_red",
+            "style": "Animated or pulsing"
+          }
+        }
+      },
+      "services_grid": {
+        "layout": "3-column grid on desktop",
+        "background": "Dark with automotive image background",
+        "card_style": {
+          "icon": {
+            "color": "brand_red",
+            "style": "Technical/mechanical themed",
+            "size": "Large (48-64px)"
+          },
+          "heading": {
+            "case": "UPPERCASE",
+            "weight": "Bold",
+            "style": "Italic/slanted",
+            "color": "white"
+          },
+          "description": {
+            "color": "light_gray or white",
+            "weight": "Regular",
+            "size": "Medium"
+          }
+        },
+        "services": [
+          {
+            "name": "PERFORMANCE MODS",
+            "icon_theme": "Wrench/tools"
+          },
+          {
+            "name": "DAZA SWAPS",
+            "icon_theme": "Engine"
+          },
+          {
+            "name": "CUSTOM FABRICATION",
+            "icon_theme": "Welding/fabrication"
+          }
+        ]
+      },
+      "product_card": {
+        "layout": "Split layout (image left, content right)",
+        "background": "White or light gray",
+        "image_section": {
+          "style": "Product photography with clean background",
+          "aspect_ratio": "Square or slightly vertical"
+        },
+        "content_section": {
+          "icon": {
+            "color": "brand_red",
+            "position": "Above heading",
+            "style": "Technical/product specific"
+          },
+          "heading": {
+            "case": "UPPERCASE",
+            "weight": "Bold",
+            "style": "Italic/slanted",
+            "color": "black"
+          },
+          "description": {
+            "style": "Regular weight, professional",
+            "color": "dark_gray"
+          },
+          "specs": {
+            "style": "Bold highlights for key numbers",
+            "format": "Power rating + descriptor",
+            "example": "900 HP - BRUSHLESS"
+          },
+          "cta": {
+            "style": "Solid red button",
+            "text": "CALL FOR DETAILS",
+            "case": "UPPERCASE"
+          }
+        }
+      },
+      "dropdown_menu": {
+        "background": "Dark gray/black (rgba)",
+        "width": "Compact (200-250px)",
+        "items": {
+          "icon": {
+            "color": "brand_red",
+            "position": "Left of text",
+            "style": "Outlined, technical"
+          },
+          "text": {
+            "color": "white",
+            "weight": "Regular to Medium",
+            "case": "Title Case or Mixed"
+          },
+          "hover": {
+            "background": "Slightly lighter gray",
+            "icon_color": "Brighter red"
+          }
+        },
+        "menu_items": [
+          "DAZA Swaps",
+          "Performance Mods",
+          "Custom Fab",
+          "Maintenance",
+          "Repairs",
+          "More"
+        ]
+      }
+    },
+    "ui_components": {
+      "buttons": {
+        "primary": {
+          "background": "brand_red",
+          "text_color": "white",
+          "text_transform": "UPPERCASE",
+          "font_weight": "Bold",
+          "shape": "Rectangle with optional skew/angle",
+          "padding": "15-20px horizontal, 10-15px vertical",
+          "hover": "Darken or scale"
+        },
+        "secondary": {
+          "background": "transparent",
+          "border": "2px solid white or brand_red",
+          "text_color": "white or brand_red"
+        }
+      },
+      "icons": {
+        "style": "Outlined, minimal, technical",
+        "color": "brand_red as default",
+        "categories": {
+          "navigation": ["phone", "email", "location", "dropdown_arrow"],
+          "services": ["wrench", "engine", "welding", "maintenance", "tools"],
+          "social": ["facebook", "instagram", "youtube"]
+        }
+      },
+      "spacing": {
+        "sections": "80-120px vertical padding",
+        "cards": "30-40px internal padding",
+        "elements": "15-25px between related items"
+      }
+    },
+    "interaction_patterns": {
+      "hover_states": {
+        "links": "Color change to brand_red or underline",
+        "buttons": "Darken background or subtle scale (1.05)",
+        "cards": "Subtle shadow or border highlight",
+        "icons": "Color intensify or subtle rotation"
+      },
+      "active_states": {
+        "nav_items": "Brand red color or underline indicator",
+        "dropdown": "Open with smooth transition"
+      }
+    },
+    "visual_motifs": {
+      "diagonal_elements": "Skewed/italic text and angled buttons for dynamic feel",
+      "high_contrast": "Dark backgrounds with white text and red accents",
+      "automotive_imagery": "Blurred or darkened background images of car parts/interiors",
+      "technical_aesthetic": "Precise, engineered feel with technical icons",
+      "bold_typography": "Heavy, condensed, uppercase headers with italics"
+    },
+    "responsive_behavior": {
+      "mobile": {
+        "navbar": "Hamburger menu",
+        "hero": "Stack vertically, maintain hierarchy",
+        "services_grid": "Single column stack",
+        "product_card": "Stack image above content"
+      },
+      "tablet": {
+        "services_grid": "2 columns",
+        "maintain_spacing": "Proportional reduction"
+      }
+    },
+    "brand_personality": {
+      "adjectives": ["Bold", "Technical", "Premium", "High-performance", "Aggressive", "Modern", "Professional"],
+      "avoid": ["Soft curves", "Pastel colors", "Playful elements", "Excessive whitespace", "Minimal contrast"]
+    }
+  }
+}
+```
