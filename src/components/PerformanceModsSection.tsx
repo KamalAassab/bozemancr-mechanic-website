@@ -1,12 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { FaTools } from "react-icons/fa";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { Component as RotatingButton } from "@/components/ui/button-rotate";
 
 export function PerformanceModsSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  
   const [isButtonOpen, setIsButtonOpen] = useState(false);
   const [selectedService, setSelectedService] = useState("ENGINE");
 
@@ -14,7 +17,7 @@ export function PerformanceModsSection() {
     {
       id: "ENGINE",
       title: "ENGINE",
-      icon: "/svg/performance-hero.svg",
+      icon: "/icons/performance-hero.svg",
       content: {
         title: "Engine Performance",
       description: "We can handle everything from tune-ups to full engine builds that can handle plenty of boost and produce serious power. Let us know what your goals are!",
@@ -37,7 +40,7 @@ export function PerformanceModsSection() {
     {
       id: "TRANSMISSION",
       title: "TRANSMISSION", 
-      icon: "/svg/steering.svg",
+      icon: "/icons/steering.svg",
       content: {
         title: "Transmission Performance",
         description: "A key component to putting all that power to the ground is your transmission. We can upgrade your clutches to handle the brutal power your throwing at it and make sure your not leaving anything on the table.",
@@ -55,7 +58,7 @@ export function PerformanceModsSection() {
     {
       id: "AIR FLOW",
       title: "AIR FLOW",
-      icon: "/svg/exaust.svg",
+      icon: "/icons/exaust.svg",
       content: {
         title: "Air Flow Systems",
       description: "Breathe new life into your motor by upgrading its airflow. We can fabricate or install any kind of intake and exhaust to keep your motor and turbo humming along with minimal effort.",
@@ -75,7 +78,7 @@ export function PerformanceModsSection() {
     {
       id: "SUSPENSION",
       title: "SUSPENSION",
-      icon: "/svg/alignments.svg",
+      icon: "/icons/alignments.svg",
       content: {
         title: "Suspension & Handling",
       description: "We can get your car dialed in for street, track, or comfort with a wide array of suspension mods and the right alignment to keep your car handling great!",
@@ -100,48 +103,154 @@ export function PerformanceModsSection() {
   ];
 
   return (
-    <section id="performance" className="relative h-[700px] bg-black overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: 'url(/motor1.png)',
-          filter: 'blur(2px) brightness(0.3)'
-        }}
-      ></div>
+    <section ref={ref} id="performance" className="relative min-h-[400px] sm:h-[500px] md:h-[600px] bg-transparent overflow-hidden z-20">
 
       {/* Content */}
       <div className="relative z-10 h-full flex items-center">
-        <div className="w-full flex justify-between items-center">
+        <div className="w-full flex flex-col lg:flex-row justify-between items-center px-4 sm:px-6 md:px-8">
           {/* Text Content */}
-          <div className="text-left pl-20 flex-1">
-            <div className="space-y-6">
+          <motion.div 
+            className="text-left lg:pl-20 flex-1 mb-8 lg:mb-0"
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            <div className="space-y-4 sm:space-y-6">
               {/* Main Headlines */}
-              <div>
-                <h1 className="text-8xl md:text-9xl font-black text-yellow-400 font-condensed italic uppercase -mb-4 tracking-tighter">
-                  PERFORMANCE
-                </h1>
-                <h1 className="text-8xl md:text-9xl font-black text-yellow-400 font-condensed italic uppercase -mb-4 tracking-tighter">
-                  MODS
-                </h1>
-                <h2 className="text-6xl md:text-7xl font-black text-white font-condensed italic uppercase tracking-tight -mb-2">
+              <motion.div 
+                className="pt-4 md:pt-0"
+                initial={{ opacity: 0, y: 50 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                transition={{ duration: 0.15, delay: 0.1 }}
+              >
+                <motion.h1 
+                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-yellow-400 font-condensed italic uppercase -mb-2 sm:-mb-4 tracking-tighter whitespace-nowrap sm:whitespace-normal mt-8 sm:mt-0"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+                  transition={{ duration: 0.15, delay: 0.2 }}
+                >
+                  <span>PERFORMANCE</span>
+                  <span className="sm:block lg:block"> MODS</span>
+                </motion.h1>
+                <motion.h2 
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white font-condensed italic uppercase tracking-tight -mb-2"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+                  transition={{ duration: 0.15, delay: 0.4 }}
+                >
                   MAKE 'EM SELL IT
-          </h2>
-        </div>
+                </motion.h2>
+              </motion.div>
 
               {/* Description */}
-              <p className="text-white text-sm md:text-base font-black italic uppercase max-w-2xl leading-tight">
+              <motion.p 
+                className="text-white text-xs sm:text-sm md:text-base font-black italic uppercase max-w-2xl leading-tight"
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ duration: 0.15, delay: 0.5 }}
+              >
                 WE CAN BRING YOUR CAR FROM SLOW TO "WHOA!" WITH ANY COMBO OF BOLT-ONS AND TUNES WE CAN HELP SOURCE AND INSTALL.
-              </p>
+              </motion.p>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Start Here Button - Right Side */}
-          <div className="flex justify-end pr-20">
-            <div onClick={() => setIsButtonOpen(true)} className="cursor-pointer">
+          {/* Performance Cards - Mobile Only */}
+          <motion.div 
+            className="flex flex-col space-y-4 md:hidden w-full -mt-8"
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 0.4, delay: 0.6 }}
+          >
+            {services.map((service, index) => (
+              <motion.div
+                key={service.id}
+                className="bg-black/90 border-2 border-primary/40 rounded-lg p-4 group"
+                initial={{ opacity: 0, x: 50, scale: 0.9 }}
+                animate={isInView ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: 50, scale: 0.9 }}
+                transition={{ duration: 0.15, delay: 0.7 + (index * 0.2) }}
+                whileHover={{ 
+                  scale: 1.02, 
+                  y: -5,
+                  transition: { duration: 0.15 }
+                }}
+              >
+                {/* Card Header */}
+                <motion.div 
+                  className="flex items-center justify-between mb-3"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.4, delay: 1.6 + (index * 0.2) }}
+                >
+                  <motion.h3 
+                    className="text-white font-condensed font-black italic text-xl uppercase tracking-tight"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    {service.title}
+                  </motion.h3>
+                  <motion.div 
+                    className="w-8 h-8 flex items-center justify-center bg-primary/20 rounded-lg"
+                    whileHover={{ rotate: 5, scale: 1.1 }}
+                  >
+                    <Image 
+                      src={service.icon} 
+                      alt={service.title}
+                      width={24}
+                      height={24}
+                      className="text-primary"
+                    />
+                  </motion.div>
+                </motion.div>
+                
+                {/* Card Body - All Features List */}
+                <motion.div 
+                  className="grid grid-cols-2 gap-2"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.4, delay: 1.8 + (index * 0.2) }}
+                >
+                  {service.content.features.map((feature, featureIndex) => (
+                    <motion.div 
+                      key={featureIndex} 
+                      className="flex items-center py-1"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+                      transition={{ duration: 0.15, delay: 2.0 + (index * 0.2) + (featureIndex * 0.05) }}
+                    >
+                      <motion.div 
+                        className="w-3 h-3 bg-primary rounded-full mr-2 flex items-center justify-center flex-shrink-0"
+                        whileHover={{ scale: 1.2, rotate: 5 }}
+                      >
+                        <span className="text-black font-bold text-xs">✓</span>
+                      </motion.div>
+                      <motion.span 
+                        className="text-white/80 text-xs font-bold italic leading-tight"
+                        whileHover={{ scale: 1.02, color: "rgb(255 0 54)" }}
+                      >
+                        {feature}
+                      </motion.span>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Start Here Button - Desktop Only */}
+          <motion.div 
+            className="hidden md:flex justify-center lg:justify-end lg:pr-20 m-0 md:m-auto"
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            transition={{ duration: 0.15, delay: 0.6 }}
+          >
+            <motion.div 
+              onClick={() => setIsButtonOpen(true)} 
+              className="cursor-pointer scale-75 sm:scale-90 lg:scale-100 m-0"
+              whileHover={{ scale: 1.1, y: -5 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <RotatingButton />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
         </div>
             </div>
@@ -154,7 +263,7 @@ export function PerformanceModsSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
             onClick={() => setIsButtonOpen(false)}
           >
             <motion.div 
@@ -186,7 +295,7 @@ export function PerformanceModsSection() {
               className="flex flex-col lg:flex-row h-auto lg:h-[80vh] max-h-[600px]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.4 }}
+              transition={{ delay: 0.1, duration: 0.4 }}
             >
               {/* Left Column - Navigation */}
               <motion.div 
@@ -200,7 +309,7 @@ export function PerformanceModsSection() {
                     className="font-condensed font-black italic text-2xl text-yellow-400 uppercase tracking-tight mb-6 leading-tight text-center"
                     initial={{ y: -20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.4, duration: 0.3 }}
+                    transition={{ delay: 0.2, duration: 0.15 }}
                   >
                     We can source and install a large selection of mods for your car
                   </motion.h3>
@@ -216,7 +325,7 @@ export function PerformanceModsSection() {
                         }`}
                         initial={{ x: -30, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: 0.5 + (index * 0.1), duration: 0.3 }}
+                        transition={{ delay: 0.5 + (index * 0.1), duration: 0.15 }}
                         whileHover={{ x: 5, scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
@@ -232,7 +341,7 @@ export function PerformanceModsSection() {
                 className="w-full lg:w-1/3 bg-white border-8 border-white"
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.4, duration: 0.4, ease: "easeOut" }}
+                transition={{ delay: 0.2, duration: 0.4, ease: "easeOut" }}
               >
                 <div className="p-8 h-full flex flex-col">
                   {(() => {
@@ -244,7 +353,7 @@ export function PerformanceModsSection() {
                           className="flex items-center mb-6"
                           initial={{ scale: 0.8, opacity: 0 }}
                           animate={{ scale: 1, opacity: 1 }}
-                          transition={{ delay: 0.6, duration: 0.3 }}
+                          transition={{ delay: 0.3, duration: 0.15 }}
                         >
                           <h2 className="font-condensed font-black italic text-4xl text-black uppercase tracking-tight mr-4">
                             {currentService.title}
@@ -252,7 +361,7 @@ export function PerformanceModsSection() {
                           <motion.div 
                             className="w-8 h-8 flex items-center justify-center"
                             whileHover={{ rotate: 360, scale: 1.1 }}
-                            transition={{ duration: 0.3 }}
+                            transition={{ duration: 0.15 }}
                           >
                             <Image 
                               src={currentService.icon} 
@@ -272,7 +381,7 @@ export function PerformanceModsSection() {
                                 className="flex items-center py-0.5"
                                 initial={{ x: -20, opacity: 0 }}
                                 animate={{ x: 0, opacity: 1 }}
-                                transition={{ delay: 0.7 + (index * 0.05), duration: 0.3 }}
+                                transition={{ delay: 0.7 + (index * 0.05), duration: 0.15 }}
                                 whileHover={{ x: 5, scale: 1.02 }}
                               >
                                 <motion.div 
@@ -306,7 +415,7 @@ export function PerformanceModsSection() {
                     className="flex-1 flex items-center justify-center"
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 0.8, duration: 0.4 }}
+                    transition={{ delay: 0.4, duration: 0.4 }}
                   >
                     {(() => {
                       const currentService = services.find(s => s.id === selectedService);
@@ -315,7 +424,7 @@ export function PerformanceModsSection() {
                           className="text-black text-base leading-relaxed font-bold tracking-tight uppercase"
                           initial={{ y: 20, opacity: 0 }}
                           animate={{ y: 0, opacity: 1 }}
-                          transition={{ delay: 0.9, duration: 0.3 }}
+                          transition={{ delay: 0.9, duration: 0.15 }}
                         >
                           {currentService.content.description}
                         </motion.p>
@@ -325,11 +434,11 @@ export function PerformanceModsSection() {
 
                   {/* CTA Button */}
                   <motion.a 
-                    href="tel:12033454647"
+                    href="tel:12345678910"
                     className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-condensed font-black italic text-lg uppercase py-4 px-4 text-center"
                     initial={{ y: 30, opacity: 0, scale: 0.9 }}
                     animate={{ y: 0, opacity: 1, scale: 1 }}
-                    transition={{ delay: 1.0, duration: 0.4, ease: "easeOut" }}
+                    transition={{ delay: 0.5, duration: 0.4, ease: "easeOut" }}
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                   >

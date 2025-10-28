@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, useMotionValue, useTransform, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -14,52 +14,59 @@ export default function CardStack() {
   const initialCards: Card[] = [
     {
       id: 1,
-      src: "/gallery/pic1.jpg",
+      src: "/images/gallery/pic1.jpg",
       alt: "Gallery Image 1",
       title: "Engine Work",
       description: "Professional automotive engine service"
     },
     {
       id: 2,
-      src: "/gallery/pic2.jpg",
+      src: "/images/gallery/pic2.jpg",
       alt: "Gallery Image 2",
       title: "Performance Tuning",
       description: "High-performance vehicle modifications"
     },
     {
       id: 3,
-      src: "/gallery/pic3.jpg",
+      src: "/images/gallery/pic3.jpg",
       alt: "Gallery Image 3",
-      title: "Custom Fabrication",
-      description: "Precision custom automotive parts"
+      title: "Performance Parts",
+      description: "High-quality automotive components"
     },
     {
       id: 4,
-      src: "/gallery/pic4.jpg",
+      src: "/images/gallery/pic4.jpg",
       alt: "Gallery Image 4",
       title: "Diagnostic Services",
       description: "Advanced computer diagnostics"
     },
     {
       id: 5,
-      src: "/gallery/pic5.jpg",
+      src: "/images/gallery/pic5.jpg",
       alt: "Gallery Image 5",
       title: "Maintenance",
       description: "Complete vehicle maintenance"
     },
     {
       id: 6,
-      src: "/gallery/pic6.jpg",
+      src: "/images/gallery/pic6.jpg",
       alt: "Gallery Image 6",
       title: "Repair Services",
       description: "Expert automotive repairs"
     },
     {
       id: 7,
-      src: "/gallery/pic7.jpg",
+      src: "/images/gallery/pic7.jpg",
       alt: "Gallery Image 7",
       title: "Specialty Work",
       description: "Specialized automotive services"
+    },
+    {
+      id: 8,
+      src: "/images/gallery/pic8.jpg",
+      alt: "Gallery Image 8",
+      title: "Professional Service",
+      description: "Expert automotive service and repairs"
     }
   ];
 
@@ -95,7 +102,7 @@ export default function CardStack() {
     setCurrentIndex((prev) => (prev - 1 + initialCards.length) % initialCards.length);
   };
 
-  const handleDragEnd = (_: any, info: any) => {
+  const handleDragEnd = (_: unknown, info: { offset: { y: number }; velocity: { y: number } }) => {
     const velocity = info.velocity.y;
     const offset = info.offset.y;
 
@@ -122,46 +129,9 @@ export default function CardStack() {
   const shadowCardBack = '0 15px 30px rgba(0, 0, 0, 0.4)';
 
   return (
-    <div className="w-full h-[600px] flex items-center justify-center relative overflow-hidden">
-      {/* Aggressive Navigation Buttons */}
-      <button
-        onClick={moveToStart}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 hover:scale-125 transition-all duration-200 hover:rotate-[-5deg] group"
-      >
-        <div className="relative">
-          {/* Main aggressive arrow */}
-          <svg className="w-40 h-40 transition-all duration-200" viewBox="0 0 100 100" fill="none">
-            {/* Black fill with red outline */}
-            <path d="M20 50 L80 20 L80 35 L45 50 L80 65 L80 80 Z" fill="#000000" stroke="#f0083b" strokeWidth="3" strokeLinejoin="round"/>
-            {/* Sharp accent lines */}
-            <path d="M15 45 L25 50 L15 55 Z" fill="#000000" stroke="#f0083b" strokeWidth="2"/>
-            <path d="M15 40 L20 50 L15 60 Z" fill="#000000" stroke="#f0083b" strokeWidth="2"/>
-          </svg>
-          {/* Aggressive glow effect */}
-          <div className="absolute inset-0 w-40 h-40 bg-red-600/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-        </div>
-      </button>
-
-      <button
-        onClick={moveToEnd}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 hover:scale-125 transition-all duration-200 hover:rotate-[5deg] group"
-      >
-        <div className="relative">
-          {/* Main aggressive arrow */}
-          <svg className="w-40 h-40 transition-all duration-200" viewBox="0 0 100 100" fill="none">
-            {/* Black fill with red outline */}
-            <path d="M80 50 L20 20 L20 35 L55 50 L20 65 L20 80 Z" fill="#000000" stroke="#f0083b" strokeWidth="3" strokeLinejoin="round"/>
-            {/* Sharp accent lines */}
-            <path d="M85 45 L75 50 L85 55 Z" fill="#000000" stroke="#f0083b" strokeWidth="2"/>
-            <path d="M85 40 L80 50 L85 60 Z" fill="#000000" stroke="#f0083b" strokeWidth="2"/>
-          </svg>
-          {/* Aggressive glow effect */}
-          <div className="absolute inset-0 w-40 h-40 bg-red-600/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-        </div>
-      </button>
-
+    <div className="w-full h-[400px] sm:h-[450px] md:h-[500px] flex items-center justify-center relative overflow-hidden">
       {/* Card Stack Container */}
-      <div className="relative w-[800px] aspect-video overflow-visible z-10">
+      <div className="relative w-[350px] sm:w-[400px] md:w-[500px] lg:w-[600px] aspect-video overflow-visible z-10 mx-4 sm:mx-6 md:mx-8">
         <ul className="relative w-full h-full m-0 p-0">
           <AnimatePresence>
             {cards.map(({ id, src, alt, title, description }, i) => {
@@ -228,6 +198,26 @@ export default function CardStack() {
         </ul>
       </div>
 
+      {/* Navigation Buttons - More spacing from image edges */}
+      <button
+        onClick={moveToStart}
+        className="absolute top-1/2 -translate-y-1/2 z-20 group bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 w-10 h-10 sm:w-12 sm:h-12 flex justify-center items-center rounded-full transition-all duration-300 hover:scale-110"
+        style={{ 
+          left: 'calc(50% - 175px - 210px)' // Adjusted for larger mobile image (350px/2 = 175px)
+        }}
+      >
+        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:text-primary transition-colors duration-300" />
+      </button>
+
+      <button
+        onClick={moveToEnd}
+        className="absolute top-1/2 -translate-y-1/2 z-20 group bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 w-10 h-10 sm:w-12 sm:h-12 flex justify-center items-center rounded-full transition-all duration-300 hover:scale-110"
+        style={{ 
+          right: 'calc(50% - 175px - 210px)' // Adjusted for larger mobile image (350px/2 = 175px)
+        }}
+      >
+        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:text-primary transition-colors duration-300" />
+      </button>
     </div>
   );
 }

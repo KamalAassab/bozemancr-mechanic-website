@@ -3,12 +3,14 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Phone, Mail, MapPin, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, Mail, MapPin, ChevronDown, Wrench } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,16 +23,15 @@ export function Navigation() {
 
   const navItems = [
     { href: "#about", label: "ABOUT", icon: null },
-    { href: "mailto:info@bozemancr.com", label: "EMAIL US", icon: Mail },
+                    { href: "mailto:kamalaassab2002@gmail.com", label: "EMAIL US", icon: Mail },
     { href: "#location", label: "LOCATION", icon: MapPin },
   ];
 
   const servicesItems = [
-    { href: "#performance", label: "Performance Mods", icon: "/svg/performance-hero.svg" },
-    { href: "#fabrication", label: "Custom Fab", icon: "/svg/custom-fab.svg" },
-    { href: "#maintenance", label: "Maintenance", icon: "/svg/oil.svg" },
-    { href: "#repairs", label: "Repairs", icon: "/svg/repair.svg" },
-    { href: "#more", label: "More", icon: "/svg/more.svg" },
+    { href: "#performance", label: "Performance Mods", icon: "/icons/performance-hero.svg" },
+    { href: "#additional-services", label: "Maintenance", icon: "/icons/oil.svg" },
+    { href: "#additional-services", label: "Repairs", icon: "/icons/repair.svg" },
+    { href: "#additional-services", label: "More", icon: "/icons/more.svg", isMore: true },
   ];
 
   return (
@@ -38,19 +39,38 @@ export function Navigation() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-black/95 backdrop-blur-md border-b border-white/10"
-          : "bg-transparent"
+          : "bg-black/20 backdrop-blur-sm lg:bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16">
           {/* Professional Logo */}
-          <Link href="/" className="flex items-center group">
-            <div className="text-5xl font-black font-condensed transition-all duration-300 group-hover:scale-105">
-              <span className="text-primary italic drop-shadow-lg">BOZEMAN</span>
-              <span className="text-white italic group-hover:text-primary transition-colors duration-300">CR</span>
-            </div>
-            <div className="ml-3 w-1.5 h-8 bg-gradient-to-b from-primary via-primary/60 to-transparent group-hover:from-primary/80 group-hover:via-primary/40 group-hover:to-transparent transition-all duration-300"></div>
-          </Link>
+          <button 
+            onClick={() => {
+              document.getElementById('hero')?.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }}
+            className="flex items-center group cursor-pointer"
+          >
+            {/* Mobile Logo */}
+            <Image
+              src="/assets/bozemancr-logo-mobile.png"
+              alt="BozemanCR Logo"
+              width={150}
+              height={48}
+              className="transition-all duration-300 group-hover:scale-105 md:hidden -ml-2"
+            />
+            {/* Desktop Logo */}
+            <Image
+              src="/assets/bozemancr-logo.png"
+              alt="BozemanCR Logo"
+              width={180}
+              height={58}
+              className="transition-all duration-300 group-hover:scale-105 hidden md:block"
+            />
+          </button>
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center space-x-8">
@@ -61,10 +81,10 @@ export function Navigation() {
               onMouseLeave={() => setIsServicesOpen(false)}
             >
               <button
-                className="flex items-center gap-3 text-white/80 hover:text-primary font-condensed font-bold italic text-2xl transition-colors duration-200 hover:scale-105 transform"
+                className="flex items-center gap-2 text-white/80 hover:text-primary font-condensed font-bold italic text-lg transition-colors duration-200 hover:scale-105 transform"
               >
                 SERVICES
-                <ChevronDown className={`w-6 h-6 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
               </button>
               
               {/* Services Dropdown Menu */}
@@ -80,19 +100,28 @@ export function Navigation() {
                         <a
                           key={item.href}
                           href={item.href}
-                          className="flex items-center px-6 py-4 text-white/90 hover:text-white hover:bg-gradient-to-r hover:from-primary/30 hover:via-primary/20 hover:to-transparent font-condensed font-black italic text-lg transition-all duration-300 group border-l-4 border-transparent hover:border-primary relative overflow-hidden"
+                          onClick={(e) => {
+                            if (item.isMore) {
+                              e.preventDefault();
+                              document.getElementById('service-icons')?.scrollIntoView({ 
+                                behavior: 'smooth',
+                                block: 'center'
+                              });
+                            }
+                          }}
+                          className="flex items-center px-4 py-3 text-white/90 hover:text-white hover:bg-gradient-to-r hover:from-primary/30 hover:via-primary/20 hover:to-transparent font-condensed font-black italic text-base transition-all duration-300 group border-l-4 border-transparent hover:border-primary relative overflow-hidden"
                           style={{ animationDelay: `${index * 40}ms` }}
                         >
                           {/* Aggressive background effect */}
                           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                           
                           {/* Icon - Clean */}
-                          <div className="relative w-12 h-12 flex items-center justify-center mr-5 group-hover:scale-110 transition-all duration-300">
+                          <div className="relative w-10 h-10 flex items-center justify-center mr-4 group-hover:scale-110 transition-all duration-300">
                             <Image 
                               src={item.icon} 
                               alt={item.label}
-                              width={32}
-                              height={32}
+                              width={24}
+                              height={24}
                               className="transition-all duration-300"
                             />
                           </div>
@@ -121,91 +150,235 @@ export function Navigation() {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="flex items-center gap-3 text-white/80 hover:text-primary font-condensed font-bold italic text-2xl transition-colors duration-200 hover:scale-105 transform"
+                  className="flex items-center gap-2 text-white/80 hover:text-primary font-condensed font-bold italic text-lg transition-colors duration-200 hover:scale-105 transform"
                 >
-                  {IconComponent && <IconComponent className="w-6 h-6" />}
+                  {IconComponent && <IconComponent className="w-5 h-5" />}
                   {item.label}
                 </a>
               );
             })}
             <a
-              href="tel:12033454647"
-              className="flex items-center gap-3 bg-primary hover:bg-primary/90 text-white font-condensed font-bold italic text-2xl px-8 py-4 transition-all duration-200 transform hover:scale-105"
+              href="tel:12345678910"
+              className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-condensed font-bold italic text-lg px-6 py-3 transition-all duration-200 transform hover:scale-105"
             >
-              <Phone className="w-6 h-6" />
+              <Phone className="w-5 h-5" />
               CALL NOW
             </a>
           </div>
 
+          {/* Mobile Contact Icons & Menu Button */}
+          <div className="flex items-center gap-2 lg:hidden">
+            {/* Mobile Contact Icons */}
+            <a
+              href="tel:12345678910"
+              className="text-white hover:text-primary transition-colors duration-200 p-2"
+              aria-label="Call Now"
+            >
+              <Phone className="w-5 h-5" />
+            </a>
+            <a
+              href="mailto:kamalaassab2002@gmail.com"
+              className="text-white hover:text-primary transition-colors duration-200 p-2"
+              aria-label="Email Us"
+            >
+              <Mail className="w-5 h-5" />
+            </a>
+            <a
+              href="#location"
+              className="text-white hover:text-primary transition-colors duration-200 p-2"
+              aria-label="Location"
+            >
+              <MapPin className="w-5 h-5" />
+            </a>
+
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-white hover:text-primary transition-colors"
+              className="text-white hover:text-primary transition-colors p-2"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
+        <AnimatePresence>
         {isOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-md border-b border-white/10">
-            <div className="container mx-auto px-4 py-6">
-              <div className="flex flex-col space-y-4">
+            <motion.div 
+              className="lg:hidden absolute top-full left-0 right-0 bg-black border-b border-primary/30 shadow-2xl"
+              initial={{ opacity: 0, y: -20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.95 }}
+              transition={{ duration: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              <motion.div 
+                className="container mx-auto px-4 py-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.2, delay: 0.1 }}
+              >
+                <motion.div 
+                  className="flex flex-col space-y-1 bg-black"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.15, delay: 0.2 }}
+                >
                 {/* Services Section */}
-                <div>
-                  <div className="text-white/80 font-condensed font-bold italic text-3xl mb-4">SERVICES</div>
-                  <div className="ml-4 space-y-2">
-                    {servicesItems.map((item) => {
-                      return (
-                        <a
-                          key={item.href}
-                          href={item.href}
-                          onClick={() => setIsOpen(false)}
-                          className="flex items-center gap-4 text-white/70 hover:text-primary font-condensed font-bold italic text-2xl transition-colors duration-200 group"
+                <motion.div 
+                  className="relative"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.3 }}
+                >
+                  <motion.button
+                    onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                    className="group flex items-center justify-between w-full p-2 bg-gradient-to-r from-white/5 via-white/3 to-transparent rounded-md hover:from-primary/10 hover:via-primary/5 hover:to-primary/2 transition-all duration-300 hover:scale-[1.01] hover:shadow-lg hover:shadow-primary/10"
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <div className="flex items-center justify-center gap-2 w-full">
+                      <motion.div 
+                        className="w-6 h-6 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300"
+                        whileHover={{ rotate: 5, scale: 1.1 }}
+                      >
+                        <Wrench className="w-4 h-4 text-primary" />
+                      </motion.div>
+                      <motion.span 
+                        className="text-white font-condensed font-black italic text-lg tracking-wide text-center group-hover:text-primary transition-colors duration-300"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        SERVICES
+                      </motion.span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <motion.div 
+                        className="w-1.5 h-1.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        whileHover={{ scale: 1.2 }}
+                      ></motion.div>
+                      <motion.div
+                        animate={{ rotate: isMobileServicesOpen ? 180 : 0 }}
+                        transition={{ duration: 0.15 }}
+                      >
+                        <ChevronDown className="w-4 h-4 text-primary transition-all duration-300 group-hover:scale-110" />
+                      </motion.div>
+                    </div>
+                  </motion.button>
+                  
+                  {/* Services Dropdown */}
+                  <AnimatePresence>
+                    {isMobileServicesOpen && (
+                      <motion.div 
+                        className="overflow-hidden"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                      >
+                        <motion.div 
+                          className="bg-black/80 border border-white/10 rounded-md p-1 space-y-0.5 mt-1"
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.15, delay: 0.1 }}
                         >
-                          <div className="w-10 h-10 flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                          {servicesItems.map((item, index) => (
+                            <motion.a
+                              key={item.href}
+                              href={item.href}
+                              onClick={(e) => {
+                                if (item.isMore) {
+                                  e.preventDefault();
+                                  document.getElementById('service-icons')?.scrollIntoView({ 
+                                    behavior: 'smooth',
+                                    block: 'center'
+                                  });
+                                }
+                                setIsOpen(false);
+                                setIsMobileServicesOpen(false);
+                              }}
+                              className="group flex items-center gap-2 p-1.5 rounded-md hover:bg-gradient-to-r hover:from-primary/20 hover:via-primary/10 hover:to-transparent transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-primary/10"
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.15, delay: 0.2 + (index * 0.05) }}
+                              whileHover={{ scale: 1.02, x: 5 }}
+                              whileTap={{ scale: 0.98 }}
+                            >
+                              <motion.div 
+                                className="w-5 h-5 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300"
+                                whileHover={{ rotate: 5, scale: 1.1 }}
+                              >
                             <Image 
                               src={item.icon} 
                               alt={item.label}
-                              width={28}
-                              height={28}
+                                  width={16}
+                                  height={16}
                               className="transition-all duration-300"
                             />
-                          </div>
+                              </motion.div>
+                              <div className="flex-1 text-left">
+                                <motion.span 
+                                  className="text-white font-condensed font-bold italic text-base group-hover:text-primary transition-colors duration-300"
+                                  whileHover={{ scale: 1.05 }}
+                                >
                           {item.label}
-                        </a>
-                      );
-                    })}
+                                </motion.span>
                   </div>
-                </div>
+                              <motion.div 
+                                className="w-1.5 h-1.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                whileHover={{ scale: 1.2 }}
+                              ></motion.div>
+                            </motion.a>
+                          ))}
+                        </motion.div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
 
-                {/* Other Navigation Items */}
-                {navItems.map((item) => {
-                  const IconComponent = item.icon;
-                  return (
-                    <a
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setIsOpen(false)}
-                      className="flex items-center gap-4 text-white/80 hover:text-primary font-condensed font-bold italic text-2xl transition-colors duration-200"
-                    >
-                      {IconComponent && <IconComponent className="w-8 h-8" />}
-                      {item.label}
-                    </a>
-                  );
-                })}
-                <a
-                  href="tel:12033454647"
-                  onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-white font-condensed font-bold italic text-2xl px-8 py-5 transition-all duration-200 transform hover:scale-105 mt-4"
+                {/* About Section */}
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.5 }}
                 >
-                  <Phone className="w-8 h-8" />
-                  CALL NOW
-                </a>
+                  <motion.a
+                    href="#about"
+                    onClick={() => setIsOpen(false)}
+                    className="group flex items-center gap-2 p-2 bg-gradient-to-r from-white/5 via-white/3 to-transparent border border-white/10 rounded-md hover:from-primary/10 hover:via-primary/5 hover:to-primary/2 hover:border-primary/30 transition-all duration-300 hover:scale-[1.01] hover:shadow-lg hover:shadow-primary/10"
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <div className="flex items-center justify-center gap-2 w-full">
+                      <motion.div 
+                        className="w-6 h-6 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300"
+                        whileHover={{ rotate: 5, scale: 1.1 }}
+                      >
+                        <Image 
+                          src="/icons/about.svg" 
+                          alt="About" 
+                          width={16} 
+                          height={16} 
+                          className="group-hover:scale-110 transition-all duration-300"
+                        />
+                      </motion.div>
+                      <motion.span 
+                        className="text-white font-condensed font-black italic text-lg tracking-wide text-center group-hover:text-primary transition-colors duration-300"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        ABOUT US
+                      </motion.span>
               </div>
-            </div>
-          </div>
+                    <motion.div 
+                      className="w-1.5 h-1.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-auto"
+                      whileHover={{ scale: 1.2 }}
+                    ></motion.div>
+                  </motion.a>
+                </motion.div>
+
+              </motion.div>
+            </motion.div>
+          </motion.div>
         )}
+        </AnimatePresence>
       </div>
     </nav>
   );

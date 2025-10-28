@@ -13,5 +13,5 @@ export default function ClientBody({
     document.body.className = "antialiased";
   }, []);
 
-  return <div className="antialiased">{children}</div>;
+  return <div className="antialiased overflow-x-hidden max-w-full">{children}</div>;
 }

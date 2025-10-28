@@ -40,7 +40,7 @@ export const Component = () => {
 
       <div className="relative w-[120px] h-[120px] rounded-full text-yellow-400 flex items-center justify-center overflow-hidden">
         <img
-          src="/svg/brake.svg"
+          src="/icons/brake.svg"
           alt="Brake"
           className="absolute w-28 h-28"
           style={{ 
@@ -49,7 +49,7 @@ export const Component = () => {
           }}
         />
         <img
-          src="/svg/brake.svg"
+          src="/icons/brake.svg"
           alt="Brake"
           className="absolute w-28 h-28"
           style={{ 

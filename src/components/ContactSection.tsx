@@ -1,82 +1,264 @@
 "use client";
 
-import { MapPin, Phone, Mail } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export function ContactSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
   return (
-    <section id="contact" className="relative py-20">
+    <section ref={ref} id="contact" className="relative py-6 md:py-12">
       <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="bg-gradient-to-br from-zinc-900/50 to-black/50 border border-primary/30 overflow-hidden">
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-              {/* Map */}
-              <div className="relative h-[400px] lg:h-auto">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2997.0822458276!2d-73.0775616!3d41.2144619!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e80dae0298e711%3A0xd4157e364b6ee48c!2sInnovative%20Motorsports%20LLC!5e0!3m2!1sen!2sus!4v1234567890"
-                  className="absolute inset-0 w-full h-full grayscale brightness-90"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <MapPin className="w-12 h-12 text-primary drop-shadow-lg" />
-                </div>
-              </div>
+        <div className="max-w-7xl mx-auto">
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-3 gap-0"
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            {/* Map Section - Left Third - Fixed */}
+            <motion.div 
+              className="relative h-[200px] md:h-[300px] lg:h-[400px] overflow-hidden"
+              initial={{ opacity: 0, x: -50, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: -50, scale: 0.9 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
+            >
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11993.59519400066!2d-111.043622!3d45.679193!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDQwJzQ1LjEiTiAxMTHCsDAyJzM3LjAiVw!5e0!3m2!1sen!2sus!4v1704567890123!5m2!1sen!2sus"
+                className="absolute inset-0 w-full h-full pointer-events-none"
+                style={{ border: 0 }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              {/* Clickable Overlay */}
+              <motion.a
+                href="https://maps.app.goo.gl/wx6KKraeJDS2t1ZY9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute inset-0 z-10 cursor-pointer hover:bg-black/5 transition-colors"
+                aria-label="Open in Google Maps"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              />
+            </motion.div>
 
-              {/* Contact Info */}
-              <div className="p-8 lg:p-12">
-                <h2 className="font-condensed font-black italic text-5xl mb-8">
-                  <span className="text-primary">VISIT US</span>
-                </h2>
+            {/* Contact Info Section - Right Two Thirds */}
+            <motion.div 
+              className="lg:col-span-2 bg-black/80 p-4 md:p-6 lg:p-8 flex flex-col justify-center"
+              initial={{ opacity: 0, x: 50, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: 50, scale: 0.9 }}
+              transition={{ duration: 0.3, delay: 0.2 }}
+            >
+              {/* Mobile: 2x2 Grid, Desktop: 2x1 Grid */}
+              <motion.div 
+                className="grid grid-cols-2 md:grid-cols-2 gap-2 md:gap-6 mb-4 md:mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.3, delay: 0.4 }}
+              >
+                {/* Visit Us */}
+                <motion.div 
+                  className="text-center lg:text-left pr-0 md:pr-6 border-r-0 md:border-r border-white/20"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+                  transition={{ duration: 0.3, delay: 0.5 }}
+                  whileHover={{ scale: 1.02, y: -2 }}
+                >
+                  <motion.h2 
+                    className="font-condensed font-black italic text-2xl md:text-4xl lg:text-5xl mb-2 md:mb-3 tracking-tight leading-tight flex items-center justify-center lg:justify-start gap-3"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <motion.div
+                      whileHover={{ rotate: 5, scale: 1.1 }}
+                      transition={{ duration: 0.1 }}
+                    >
+                      <img 
+                        src="/icons/location.svg" 
+                        alt="Location" 
+                        className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" 
+                      />
+                    </motion.div>
+                    <motion.span 
+                      className="text-primary"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.3, delay: 0.6 }}
+                    >
+                      VISIT US
+                    </motion.span>
+                  </motion.h2>
+                  <motion.div
+                    className="font-condensed font-bold text-sm md:text-lg lg:text-xl text-white uppercase tracking-tight leading-tight"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                    transition={{ duration: 0.3, delay: 0.7 }}
+                  >
+                    444 W MAIN ST<br />
+                    BOZEMAN, MT 59715
+                  </motion.div>
+                </motion.div>
 
-                <div className="space-y-6 mb-8">
-                  <div>
-                    <h3 className="font-condensed font-bold text-2xl text-white mb-2">
-                      916 B - BRIDGEPORT AVE
-                    </h3>
-                    <p className="font-condensed font-bold text-xl text-white/80">
-                      MILFORD, CT 06460
-                    </p>
-                  </div>
-                </div>
+                {/* Hours */}
+                <motion.div 
+                  className="text-center lg:text-left pl-0 md:pl-6"
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+                  transition={{ duration: 0.3, delay: 0.8 }}
+                  whileHover={{ scale: 1.02, y: -2 }}
+                >
+                  <motion.h3 
+                    className="font-condensed font-black italic text-2xl md:text-4xl lg:text-5xl mb-2 md:mb-3 tracking-tight leading-tight flex items-center justify-center lg:justify-start gap-3"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <motion.div
+                      whileHover={{ rotate: 15, scale: 1.1 }}
+                      transition={{ duration: 0.1 }}
+                    >
+                      <img 
+                        src="/icons/hours.svg" 
+                        alt="Hours" 
+                        className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" 
+                      />
+                    </motion.div>
+                    <motion.span 
+                      className="text-primary"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.3, delay: 0.9 }}
+                    >
+                      HOURS
+                    </motion.span>
+                  </motion.h3>
+                  <motion.div
+                    className="font-condensed font-bold text-xs md:text-sm lg:text-base text-white uppercase tracking-tight space-y-2"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                    transition={{ duration: 0.3, delay: 1.0 }}
+                  >
+                    <motion.div
+                      className="flex items-center justify-center lg:justify-start gap-2"
+                      whileHover={{ scale: 1.02, x: 2 }}
+                      transition={{ duration: 0.1 }}
+                    >
+                      <span className="text-primary font-black text-sm md:text-base">MON–FRI</span>
+                      <span className="text-white/60">:</span>
+                      <span className="text-white text-xs md:text-sm">8h – 18h</span>
+                    </motion.div>
+                    <motion.div
+                      className="flex items-center justify-center lg:justify-start gap-2"
+                      whileHover={{ scale: 1.02, x: 2 }}
+                      transition={{ duration: 0.1 }}
+                    >
+                      <span className="text-primary font-black text-sm md:text-base">SAT</span>
+                      <span className="text-white/60">:</span>
+                      <span className="text-white text-xs md:text-sm">9h – 14h</span>
+                    </motion.div>
+                    <motion.div
+                      className="flex items-center justify-center lg:justify-start gap-2"
+                      whileHover={{ scale: 1.02, x: 2 }}
+                      transition={{ duration: 0.1 }}
+                    >
+                      <span className="text-primary font-black text-sm md:text-base">SUN</span>
+                      <span className="text-white/60">:</span>
+                      <span className="text-white/60 text-xs md:text-sm">CLOSED</span>
+                    </motion.div>
+                  </motion.div>
+                </motion.div>
 
-                <div className="space-y-6">
-                  {/* Call Us */}
-                  <div>
-                    <h4 className="text-white/60 uppercase tracking-wider text-sm mb-3">
+                {/* Call Us */}
+                <motion.div 
+                  className="text-center lg:text-left pr-0 md:pr-6 border-r-0 md:border-r border-white/20"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+                  transition={{ duration: 0.3, delay: 1.3 }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                >
+                  <motion.h3 
+                    className="font-condensed font-black italic text-2xl md:text-4xl lg:text-5xl mb-2 md:mb-3 tracking-tight leading-tight flex items-center justify-center lg:justify-start gap-3"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <motion.div
+                      whileHover={{ rotate: 5, scale: 1.1 }}
+                      transition={{ duration: 0.1 }}
+                    >
+                      <img 
+                        src="/icons/phone.svg" 
+                        alt="Phone" 
+                        className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" 
+                      />
+                    </motion.div>
+                    <motion.span 
+                      className="text-primary"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.3, delay: 1.3 }}
+                    >
                       CALL US!
-                    </h4>
-                    <a
-                      href="tel:12033454647"
-                      className="flex items-center gap-4 text-white hover:text-primary transition-colors group"
+                    </motion.span>
+                  </motion.h3>
+                  <motion.div 
+                    className="flex flex-col items-center lg:items-start"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <motion.a
+                      href="tel:12345678910"
+                      className="font-condensed font-bold text-sm md:text-lg lg:text-xl text-white hover:text-primary transition-colors tracking-tight leading-tight"
+                      whileHover={{ scale: 1.05 }}
                     >
-                      <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary flex items-center justify-center group-hover:bg-primary transition-colors">
-                        <Phone className="w-6 h-6 text-primary group-hover:text-white" />
-                      </div>
-                      <span className="font-condensed text-xl">1 - 203 - 345 - 4647</span>
-                    </a>
-                  </div>
+                      1-234-567-8910
+                    </motion.a>
+                  </motion.div>
+                </motion.div>
 
-                  {/* Email Us */}
-                  <div>
-                    <h4 className="text-white/60 uppercase tracking-wider text-sm mb-3">
-                      EMAIL US!
-                    </h4>
-                    <a
-                      href="mailto:info@imsperformance.com"
-                      className="flex items-center gap-4 text-white hover:text-primary transition-colors group"
+                {/* Email Us */}
+                <motion.div 
+                  className="text-center lg:text-left pl-0 md:pl-6"
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+                  transition={{ duration: 0.3, delay: 1.4 }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                >
+                  <motion.h3 
+                    className="font-condensed font-black italic text-2xl md:text-4xl lg:text-5xl mb-2 md:mb-3 tracking-tight leading-tight flex items-center justify-center lg:justify-start gap-3"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <motion.div
+                      whileHover={{ rotate: 5, scale: 1.1 }}
+                      transition={{ duration: 0.1 }}
                     >
-                      <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary flex items-center justify-center group-hover:bg-primary transition-colors">
-                        <Mail className="w-6 h-6 text-primary group-hover:text-white" />
-                      </div>
-                      <span className="font-condensed text-xl">INFO@IMSPERFORMANCE.COM</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                      <img 
+                        src="/icons/email.svg" 
+                        alt="Email" 
+                        className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" 
+                      />
+                    </motion.div>
+                    <motion.span 
+                      className="text-primary"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.3, delay: 1.4 }}
+                    >
+                      EMAIL US!
+                    </motion.span>
+                  </motion.h3>
+                  <motion.div 
+                    className="flex flex-col items-center lg:items-start"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <motion.a
+                      href="mailto:kamalaassab2002@gmail.com"
+                      className="font-condensed font-bold text-xs md:text-base lg:text-lg text-white hover:text-primary transition-colors tracking-tight leading-tight"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      KAMALAASSAB2002@GMAIL.COM
+                    </motion.a>
+                  </motion.div>
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
