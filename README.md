@@ -3,6 +3,8 @@
 <div align="center">
   <img src="public/screens/hero-screen.png" alt="BozemanCR Hero Section" width="800"/>
   
+  [![Live Demo](https://img.shields.io/badge/Live_Demo-bozemancr--mechanic--website.vercel.app-green?style=for-the-badge&logo=vercel)](https://bozemancr-mechanic-website.vercel.app)
+  
   [![Next.js](https://img.shields.io/badge/Next.js-15.5.6-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
   [![React](https://img.shields.io/badge/React-18.3.1-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
   [![TypeScript](https://img.shields.io/badge/TypeScript-5.8.3-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
@@ -133,6 +135,9 @@ innovative-motorsports/
 
 4. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
+
+### 🌐 Live Demo
+Visit the live website: **[bozemancr-mechanic-website.vercel.app](https://bozemancr-mechanic-website.vercel.app)**
 
 ### Build for Production
 
