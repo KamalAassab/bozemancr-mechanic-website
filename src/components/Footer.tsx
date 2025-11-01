@@ -416,92 +416,72 @@ export function Footer() {
         style={{ backgroundImage: 'url(/images/backgrounds/footer-bg.png)' }}
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+        transition={{ duration: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
         <motion.div 
           className="bg-foreground/20 absolute top-0 right-1/2 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full blur"
           initial={{ opacity: 0, scaleX: 0 }}
           animate={isInView ? { opacity: 1, scaleX: 1 } : { opacity: 0, scaleX: 0 }}
-          transition={{ duration: 1.0, delay: 0.2 }}
+          transition={{ duration: 0.15, delay: 0.2 }}
         />
 
         <motion.div 
           className="grid w-full max-w-7xl mx-auto gap-6 sm:gap-8 xl:grid-cols-5 xl:gap-8"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.15, delay: 0.4 }}
         >
           {/* Logo Section */}
           <motion.div 
-            className="space-y-4 xl:col-span-1 text-center xl:text-left"
+            className="xl:col-span-1 flex items-center justify-center h-full"
             initial={{ opacity: 0, x: -50, scale: 0.9 }}
             animate={isInView ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: -50, scale: 0.9 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            transition={{ duration: 0.15, delay: 0.6 }}
           >
             {/* Mobile Logo */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
+              transition={{ duration: 0.15, delay: 0.8 }}
               whileHover={{ scale: 1.05, rotate: 1 }}
+              className="md:hidden"
             >
               <Image
                 src="/assets/bozemancr-logo.png"
                 alt="BozemanCR Logo"
                 width={300}
                 height={90}
-                className="transition-all duration-300 hover:scale-105 mx-auto xl:mx-0 md:hidden"
+                className="transition-all duration-150 hover:scale-105"
               />
             </motion.div>
             {/* Desktop Logo */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
+              transition={{ duration: 0.15, delay: 0.8 }}
               whileHover={{ scale: 1.05, rotate: 1 }}
+              className="hidden md:block"
             >
               <Image
                 src="/assets/bozemancr-logo.png"
                 alt="BozemanCR Logo"
                 width={300}
                 height={90}
-                className="transition-all duration-300 hover:scale-105 mx-auto xl:mx-0 hidden md:block"
+                className="transition-all duration-150 hover:scale-105"
               />
             </motion.div>
         </motion.div>
 
           <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-0 md:grid-cols-3 xl:col-span-4 xl:mt-0 xl:grid-cols-3">
           {/* Policies */}
-          <motion.div 
-            className="mb-8 md:mb-0 relative px-4"
-            initial={{ opacity: 0, x: -30, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: -30, scale: 0.9 }}
-            transition={{ duration: 0.6, delay: 1.0 }}
-          >
-                <motion.h3 
-                  className={sectionTitleClass}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.6, delay: 1.2 }}
-                  whileHover={{ scale: 1.05 }}
-                >
-                  Policies
-                </motion.h3>
-                <motion.ul 
-                  className={listClass}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.6, delay: 1.4 }}
-                >
-                <motion.li
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                  transition={{ duration: 0.4, delay: 1.6 }}
-                  whileHover={{ x: 5 }}
-                >
+          <AnimatedContainer delay={0.1}>
+            <div className="mb-8 md:mb-0 relative px-4">
+              <h3 className={sectionTitleClass}>Policies</h3>
+              <ul className={listClass}>
+                <li>
                   <motion.button 
                     onClick={() => setSelectedPolicy(policies.return)}
-                    className="hover:text-primary inline-flex items-center transition-all duration-300"
+                    className="hover:text-primary inline-flex items-center transition-all duration-150"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -518,16 +498,11 @@ export function Footer() {
                       </motion.div>
                   Return Policy
                   </motion.button>
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                transition={{ duration: 0.4, delay: 1.8 }}
-                whileHover={{ x: 5 }}
-              >
+                </li>
+                <li>
                   <motion.button 
                     onClick={() => setSelectedPolicy(policies.terms)}
-                    className="hover:text-primary inline-flex items-center transition-all duration-300"
+                    className="hover:text-primary inline-flex items-center transition-all duration-150"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -544,16 +519,11 @@ export function Footer() {
                     </motion.div>
                   Terms & Conditions
                   </motion.button>
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                transition={{ duration: 0.4, delay: 2.0 }}
-                whileHover={{ x: 5 }}
-              >
+                </li>
+                <li>
                   <motion.button 
                     onClick={() => setSelectedPolicy(policies.privacy)}
-                    className="hover:text-primary inline-flex items-center transition-all duration-300"
+                    className="hover:text-primary inline-flex items-center transition-all duration-150"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -570,16 +540,11 @@ export function Footer() {
                     </motion.div>
                   Privacy Policy
                   </motion.button>
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                transition={{ duration: 0.4, delay: 2.2 }}
-                whileHover={{ x: 5 }}
-              >
+                </li>
+                <li>
                   <motion.button 
                     onClick={() => setSelectedPolicy(policies.shipping)}
-                    className="hover:text-primary inline-flex items-center transition-all duration-300"
+                    className="hover:text-primary inline-flex items-center transition-all duration-150"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -596,15 +561,11 @@ export function Footer() {
                     </motion.div>
                   Shipping Policy
                   </motion.button>
-              </motion.li>
-            </motion.ul>
-                <motion.div 
-                  className="absolute right-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/80 to-primary hidden md:block rounded-full shadow-lg shadow-primary/30"
-                  initial={{ opacity: 0, scaleY: 0 }}
-                  animate={isInView ? { opacity: 1, scaleY: 1 } : { opacity: 0, scaleY: 0 }}
-                  transition={{ duration: 0.8, delay: 2.4 }}
-                ></motion.div>
-          </motion.div>
+                </li>
+              </ul>
+              <div className="absolute right-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/80 to-primary hidden md:block rounded-full shadow-lg shadow-primary/30"></div>
+            </div>
+          </AnimatedContainer>
 
           {/* Services */}
           <AnimatedContainer delay={0.2}>
@@ -612,7 +573,7 @@ export function Footer() {
                     <h3 className={sectionTitleClass}>Services</h3>
                     <ul className={listClass}>
                 <li>
-                  <Link href="#performance" className="hover:text-primary inline-flex items-center transition-all duration-300">
+                  <Link href="#performance" className="hover:text-primary inline-flex items-center transition-all duration-150">
                     <Image 
                       src="/icons/performance.svg" 
                       alt="Performance" 
@@ -639,7 +600,7 @@ export function Footer() {
                         }, 800);
                       }
                     }}
-                    className="hover:text-primary inline-flex items-center transition-all duration-300"
+                    className="hover:text-primary inline-flex items-center transition-all duration-150"
                   >
                     <Image 
                       src="/icons/oil.svg" 
@@ -667,7 +628,7 @@ export function Footer() {
                         }, 800);
                       }
                     }}
-                    className="hover:text-primary inline-flex items-center transition-all duration-300"
+                    className="hover:text-primary inline-flex items-center transition-all duration-150"
                   >
                     <Image 
                       src="/icons/repair.svg" 
@@ -680,7 +641,7 @@ export function Footer() {
                 </Link>
               </li>
                 <li>
-                  <Link href="#gallery" className="hover:text-primary inline-flex items-center transition-all duration-300">
+                  <Link href="#gallery" className="hover:text-primary inline-flex items-center transition-all duration-150">
                     <Image 
                       src="/icons/more.svg" 
                       alt="More Services" 
@@ -704,7 +665,7 @@ export function Footer() {
                 <li>
                   <a
                       href="tel:12345678910"
-                      className="hover:text-primary inline-flex items-center transition-all duration-300"
+                      className="hover:text-primary inline-flex items-center transition-all duration-150"
                   >
                       <Image 
                         src="/icons/phone.svg" 
@@ -719,7 +680,7 @@ export function Footer() {
                 <li>
                   <a
                       href="mailto:kamalaassab2002@gmail.com"
-                      className="hover:text-primary inline-flex items-center transition-all duration-300"
+                      className="hover:text-primary inline-flex items-center transition-all duration-150"
                   >
                       <Image 
                         src="/icons/email.svg" 
@@ -736,7 +697,7 @@ export function Footer() {
                       href="https://www.google.com/maps/place/444+W+Main+St,+Bozeman,+MT+59715"
                 target="_blank"
                 rel="noopener noreferrer"
-                    className="hover:text-primary inline-flex items-center transition-all duration-300"
+                    className="hover:text-primary inline-flex items-center transition-all duration-150"
               >
                       <Image 
                         src="/icons/location.svg" 
@@ -756,7 +717,7 @@ export function Footer() {
                   href="https://www.facebook.com/BozemanCRPerformance"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-primary transition-colors duration-300"
+                  className="hover:text-primary transition-colors duration-150"
                 >
                   <Image 
                     src="/icons/facebook.svg" 
@@ -770,7 +731,7 @@ export function Footer() {
                   href="https://www.instagram.com/bozemancr/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-primary transition-colors duration-300"
+                  className="hover:text-primary transition-colors duration-150"
                 >
                   <Image 
                     src="/icons/instagram.svg" 
@@ -809,7 +770,7 @@ export function Footer() {
                 href="https://kamal-aassab-portfolio.vercel.app" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white transition-colors duration-300"
+                className="hover:text-white transition-colors duration-150"
               >
                 KAMAL AASSAB
               </a>
@@ -839,7 +800,7 @@ function AnimatedContainer({ className, delay = 0.1, children }: ViewAnimationPr
 			initial={{ filter: 'blur(4px)', translateY: -8, opacity: 0 }}
 			whileInView={{ filter: 'blur(0px)', translateY: 0, opacity: 1 }}
 			viewport={{ once: true }}
-			transition={{ delay, duration: 0.8 }}
+			transition={{ delay, duration: 0.15 }}
 			className={className}
 		>
 			{children}

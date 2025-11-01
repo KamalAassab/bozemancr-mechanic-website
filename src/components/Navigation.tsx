@@ -5,26 +5,37 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, Phone, Mail, MapPin, ChevronDown, Wrench } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { BookingModal } from "./BookingModal";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 50);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
     { href: "#about", label: "ABOUT", icon: null },
+    { href: "#faq", label: "FAQ", icon: null },
                     { href: "mailto:kamalaassab2002@gmail.com", label: "EMAIL US", icon: Mail },
-    { href: "#location", label: "LOCATION", icon: MapPin },
+    { href: "#contact", label: "CONTACT", icon: MapPin },
   ];
 
   const servicesItems = [
@@ -36,7 +47,7 @@ export function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-150 ${
         isScrolled
           ? "bg-black/95 backdrop-blur-md border-b border-white/10"
           : "bg-black/20 backdrop-blur-sm lg:bg-transparent"
@@ -60,7 +71,7 @@ export function Navigation() {
               alt="BozemanCR Logo"
               width={150}
               height={48}
-              className="transition-all duration-300 group-hover:scale-105 md:hidden -ml-2"
+              className="transition-all duration-150 group-hover:scale-105 md:hidden -ml-2"
             />
             {/* Desktop Logo */}
             <Image
@@ -68,7 +79,7 @@ export function Navigation() {
               alt="BozemanCR Logo"
               width={180}
               height={58}
-              className="transition-all duration-300 group-hover:scale-105 hidden md:block"
+              className="transition-all duration-150 group-hover:scale-105 hidden md:block"
             />
           </button>
 
@@ -81,10 +92,10 @@ export function Navigation() {
               onMouseLeave={() => setIsServicesOpen(false)}
             >
               <button
-                className="flex items-center gap-2 text-white/80 hover:text-primary font-condensed font-bold italic text-lg transition-colors duration-200 hover:scale-105 transform"
+                className="flex items-center gap-2 text-white/80 hover:text-primary font-condensed font-bold italic text-lg transition-colors duration-100 hover:scale-105 transform"
               >
                 SERVICES
-                <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-5 h-5 transition-transform duration-100 ${isServicesOpen ? 'rotate-180' : ''}`} />
               </button>
               
               {/* Services Dropdown Menu */}
@@ -109,32 +120,32 @@ export function Navigation() {
                               });
                             }
                           }}
-                          className="flex items-center px-4 py-3 text-white/90 hover:text-white hover:bg-gradient-to-r hover:from-primary/30 hover:via-primary/20 hover:to-transparent font-condensed font-black italic text-base transition-all duration-300 group border-l-4 border-transparent hover:border-primary relative overflow-hidden"
+                          className="flex items-center px-4 py-3 text-white/90 hover:text-white hover:bg-gradient-to-r hover:from-primary/30 hover:via-primary/20 hover:to-transparent font-condensed font-black italic text-base transition-all duration-150 group border-l-4 border-transparent hover:border-primary relative overflow-hidden"
                           style={{ animationDelay: `${index * 40}ms` }}
                         >
                           {/* Aggressive background effect */}
-                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-150"></div>
                           
                           {/* Icon - Clean */}
-                          <div className="relative w-10 h-10 flex items-center justify-center mr-4 group-hover:scale-110 transition-all duration-300">
+                          <div className="relative w-10 h-10 flex items-center justify-center mr-4 group-hover:scale-110 transition-all duration-150">
                             <Image 
                               src={item.icon} 
                               alt={item.label}
                               width={24}
                               height={24}
-                              className="transition-all duration-300"
+                              className="transition-all duration-150"
                             />
                           </div>
                           
                           {/* Text with aggressive styling */}
                           <div className="relative z-10 flex-1">
-                            <span className="group-hover:tracking-wider transition-all duration-300">{item.label}</span>
+                            <span className="group-hover:tracking-wider transition-all duration-150">{item.label}</span>
                             {/* Underline effect */}
-                            <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></div>
+                            <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-150"></div>
                           </div>
                           
                           {/* Arrow indicator */}
-                          <div className="w-0 h-0 border-l-4 border-l-transparent border-r-4 border-r-transparent border-t-4 border-t-transparent group-hover:border-t-primary transition-colors duration-300 ml-2"></div>
+                          <div className="w-0 h-0 border-l-4 border-l-transparent border-r-4 border-r-transparent border-t-4 border-t-transparent group-hover:border-t-primary transition-colors duration-150 ml-2"></div>
                         </a>
                       );
                     })}
@@ -150,7 +161,7 @@ export function Navigation() {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="flex items-center gap-2 text-white/80 hover:text-primary font-condensed font-bold italic text-lg transition-colors duration-200 hover:scale-105 transform"
+                  className="flex items-center gap-2 text-white/80 hover:text-primary font-condensed font-bold italic text-lg transition-colors duration-100 hover:scale-105 transform"
                 >
                   {IconComponent && <IconComponent className="w-5 h-5" />}
                   {item.label}
@@ -159,7 +170,7 @@ export function Navigation() {
             })}
             <a
               href="tel:12345678910"
-              className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-condensed font-bold italic text-lg px-6 py-3 transition-all duration-200 transform hover:scale-105"
+              className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-condensed font-bold italic text-lg px-6 py-3 transition-all duration-100 transform hover:scale-105"
             >
               <Phone className="w-5 h-5" />
               CALL NOW
@@ -171,22 +182,22 @@ export function Navigation() {
             {/* Mobile Contact Icons */}
             <a
               href="tel:12345678910"
-              className="text-white hover:text-primary transition-colors duration-200 p-2"
+              className="text-white hover:text-primary transition-colors duration-100 p-2"
               aria-label="Call Now"
             >
               <Phone className="w-5 h-5" />
             </a>
             <a
               href="mailto:kamalaassab2002@gmail.com"
-              className="text-white hover:text-primary transition-colors duration-200 p-2"
+              className="text-white hover:text-primary transition-colors duration-100 p-2"
               aria-label="Email Us"
             >
               <Mail className="w-5 h-5" />
             </a>
             <a
-              href="#location"
-              className="text-white hover:text-primary transition-colors duration-200 p-2"
-              aria-label="Location"
+              href="#contact"
+              className="text-white hover:text-primary transition-colors duration-100 p-2"
+              aria-label="Contact"
             >
               <MapPin className="w-5 h-5" />
             </a>
@@ -215,7 +226,7 @@ export function Navigation() {
                 className="container mx-auto px-4 py-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.2, delay: 0.1 }}
+                transition={{ duration: 0.1, delay: 0.1 }}
               >
                 <motion.div 
                   className="flex flex-col space-y-1 bg-black"
@@ -228,23 +239,23 @@ export function Navigation() {
                   className="relative"
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: 0.3 }}
+                  transition={{ duration: 0.1, delay: 0.3 }}
                 >
                   <motion.button
                     onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                    className="group flex items-center justify-between w-full p-2 bg-gradient-to-r from-white/5 via-white/3 to-transparent rounded-md hover:from-primary/10 hover:via-primary/5 hover:to-primary/2 transition-all duration-300 hover:scale-[1.01] hover:shadow-lg hover:shadow-primary/10"
+                    className="group flex items-center justify-between w-full p-2 bg-gradient-to-r from-white/5 via-white/3 to-transparent rounded-md hover:from-primary/10 hover:via-primary/5 hover:to-primary/2 transition-all duration-150 hover:scale-[1.01] hover:shadow-lg hover:shadow-primary/10"
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     <div className="flex items-center justify-center gap-2 w-full">
                       <motion.div 
-                        className="w-6 h-6 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300"
+                        className="w-6 h-6 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-150"
                         whileHover={{ rotate: 5, scale: 1.1 }}
                       >
                         <Wrench className="w-4 h-4 text-primary" />
                       </motion.div>
                       <motion.span 
-                        className="text-white font-condensed font-black italic text-lg tracking-wide text-center group-hover:text-primary transition-colors duration-300"
+                        className="text-white font-condensed font-black italic text-lg tracking-wide text-center group-hover:text-primary transition-colors duration-150"
                         whileHover={{ scale: 1.05 }}
                       >
                         SERVICES
@@ -252,14 +263,14 @@ export function Navigation() {
                     </div>
                     <div className="flex items-center gap-2">
                       <motion.div 
-                        className="w-1.5 h-1.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        className="w-1.5 h-1.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-150"
                         whileHover={{ scale: 1.2 }}
                       ></motion.div>
                       <motion.div
                         animate={{ rotate: isMobileServicesOpen ? 180 : 0 }}
                         transition={{ duration: 0.15 }}
                       >
-                        <ChevronDown className="w-4 h-4 text-primary transition-all duration-300 group-hover:scale-110" />
+                        <ChevronDown className="w-4 h-4 text-primary transition-all duration-150 group-hover:scale-110" />
                       </motion.div>
                     </div>
                   </motion.button>
@@ -272,7 +283,7 @@ export function Navigation() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                        transition={{ duration: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
                       >
                         <motion.div 
                           className="bg-black/80 border border-white/10 rounded-md p-1 space-y-0.5 mt-1"
@@ -295,7 +306,7 @@ export function Navigation() {
                                 setIsOpen(false);
                                 setIsMobileServicesOpen(false);
                               }}
-                              className="group flex items-center gap-2 p-1.5 rounded-md hover:bg-gradient-to-r hover:from-primary/20 hover:via-primary/10 hover:to-transparent transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-primary/10"
+                              className="group flex items-center gap-2 p-1.5 rounded-md hover:bg-gradient-to-r hover:from-primary/20 hover:via-primary/10 hover:to-transparent transition-all duration-150 hover:scale-[1.01] hover:shadow-md hover:shadow-primary/10"
                               initial={{ opacity: 0, x: -20 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ duration: 0.15, delay: 0.2 + (index * 0.05) }}
@@ -303,7 +314,7 @@ export function Navigation() {
                               whileTap={{ scale: 0.98 }}
                             >
                               <motion.div 
-                                className="w-5 h-5 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300"
+                                className="w-5 h-5 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-150"
                                 whileHover={{ rotate: 5, scale: 1.1 }}
                               >
                             <Image 
@@ -311,19 +322,19 @@ export function Navigation() {
                               alt={item.label}
                                   width={16}
                                   height={16}
-                              className="transition-all duration-300"
+                              className="transition-all duration-150"
                             />
                               </motion.div>
                               <div className="flex-1 text-left">
                                 <motion.span 
-                                  className="text-white font-condensed font-bold italic text-base group-hover:text-primary transition-colors duration-300"
+                                  className="text-white font-condensed font-bold italic text-base group-hover:text-primary transition-colors duration-150"
                                   whileHover={{ scale: 1.05 }}
                                 >
                           {item.label}
                                 </motion.span>
                   </div>
                               <motion.div 
-                                className="w-1.5 h-1.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                className="w-1.5 h-1.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-150"
                                 whileHover={{ scale: 1.2 }}
                               ></motion.div>
                             </motion.a>
@@ -338,18 +349,18 @@ export function Navigation() {
                 <motion.div
                   initial={{ opacity: 0, x: 30 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: 0.5 }}
+                  transition={{ duration: 0.1, delay: 0.5 }}
                 >
                   <motion.a
                     href="#about"
                     onClick={() => setIsOpen(false)}
-                    className="group flex items-center gap-2 p-2 bg-gradient-to-r from-white/5 via-white/3 to-transparent border border-white/10 rounded-md hover:from-primary/10 hover:via-primary/5 hover:to-primary/2 hover:border-primary/30 transition-all duration-300 hover:scale-[1.01] hover:shadow-lg hover:shadow-primary/10"
+                    className="group flex items-center gap-2 p-2 bg-gradient-to-r from-white/5 via-white/3 to-transparent border border-white/10 rounded-md hover:from-primary/10 hover:via-primary/5 hover:to-primary/2 hover:border-primary/30 transition-all duration-150 hover:scale-[1.01] hover:shadow-lg hover:shadow-primary/10"
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     <div className="flex items-center justify-center gap-2 w-full">
                       <motion.div 
-                        className="w-6 h-6 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300"
+                        className="w-6 h-6 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-150"
                         whileHover={{ rotate: 5, scale: 1.1 }}
                       >
                         <Image 
@@ -357,18 +368,58 @@ export function Navigation() {
                           alt="About" 
                           width={16} 
                           height={16} 
-                          className="group-hover:scale-110 transition-all duration-300"
+                          className="group-hover:scale-110 transition-all duration-150"
                         />
                       </motion.div>
                       <motion.span 
-                        className="text-white font-condensed font-black italic text-lg tracking-wide text-center group-hover:text-primary transition-colors duration-300"
+                        className="text-white font-condensed font-black italic text-lg tracking-wide text-center group-hover:text-primary transition-colors duration-150"
                         whileHover={{ scale: 1.05 }}
                       >
                         ABOUT US
                       </motion.span>
               </div>
                     <motion.div 
-                      className="w-1.5 h-1.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-auto"
+                      className="w-1.5 h-1.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-150 ml-auto"
+                      whileHover={{ scale: 1.2 }}
+                    ></motion.div>
+                  </motion.a>
+                </motion.div>
+
+                {/* FAQ Section */}
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.1, delay: 0.6 }}
+                >
+                  <motion.a
+                    href="#faq"
+                    onClick={() => setIsOpen(false)}
+                    className="group flex items-center gap-2 p-2 bg-gradient-to-r from-white/5 via-white/3 to-transparent border border-white/10 rounded-md hover:from-primary/10 hover:via-primary/5 hover:to-primary/2 hover:border-primary/30 transition-all duration-150 hover:scale-[1.01] hover:shadow-lg hover:shadow-primary/10"
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <div className="flex items-center justify-center gap-2 w-full">
+                      <motion.div 
+                        className="w-6 h-6 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-150"
+                        whileHover={{ rotate: 5, scale: 1.1 }}
+                      >
+                        <Image 
+                          src="/icons/problems.svg" 
+                          alt="FAQ" 
+                          width={16} 
+                          height={16} 
+                          className="group-hover:scale-110 transition-all duration-150"
+                        />
+                      </motion.div>
+                      <motion.span 
+                        className="text-white font-condensed font-black italic text-lg tracking-wide text-center group-hover:text-primary transition-colors duration-150"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        FAQ
+                      </motion.span>
+              </div>
+                    <motion.div 
+                      className="w-1.5 h-1.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-150 ml-auto"
                       whileHover={{ scale: 1.2 }}
                     ></motion.div>
                   </motion.a>
@@ -380,6 +431,12 @@ export function Navigation() {
         )}
         </AnimatePresence>
       </div>
+
+      {/* Booking Modal */}
+      <BookingModal 
+        isOpen={isBookingOpen}
+        onClose={() => setIsBookingOpen(false)}
+      />
     </nav>
   );
 }

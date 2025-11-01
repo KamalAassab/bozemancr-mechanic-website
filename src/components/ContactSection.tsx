@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 
 export function ContactSection() {
   const ref = useRef(null);
@@ -15,14 +16,14 @@ export function ContactSection() {
             className="grid grid-cols-1 lg:grid-cols-3 gap-0"
             initial={{ opacity: 0, y: 50 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             {/* Map Section - Left Third - Fixed */}
             <motion.div 
               className="relative h-[200px] md:h-[300px] lg:h-[400px] overflow-hidden"
               initial={{ opacity: 0, x: -50, scale: 0.9 }}
               animate={isInView ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: -50, scale: 0.9 }}
-              transition={{ duration: 0.3, delay: 0.1 }}
+              transition={{ duration: 0.1, delay: 0.1 }}
             >
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11993.59519400066!2d-111.043622!3d45.679193!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDQwJzQ1LjEiTiAxMTHCsDAyJzM3LjAiVw!5e0!3m2!1sen!2sus!4v1704567890123!5m2!1sen!2sus"
@@ -49,21 +50,21 @@ export function ContactSection() {
               className="lg:col-span-2 bg-black/80 p-4 md:p-6 lg:p-8 flex flex-col justify-center"
               initial={{ opacity: 0, x: 50, scale: 0.9 }}
               animate={isInView ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: 50, scale: 0.9 }}
-              transition={{ duration: 0.3, delay: 0.2 }}
+              transition={{ duration: 0.1, delay: 0.2 }}
             >
               {/* Mobile: 2x2 Grid, Desktop: 2x1 Grid */}
               <motion.div 
                 className="grid grid-cols-2 md:grid-cols-2 gap-2 md:gap-6 mb-4 md:mb-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.3, delay: 0.4 }}
+                transition={{ duration: 0.1, delay: 0.4 }}
               >
                 {/* Visit Us */}
                 <motion.div 
                   className="text-center lg:text-left pr-0 md:pr-6 border-r-0 md:border-r border-white/20"
                   initial={{ opacity: 0, x: -30 }}
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-                  transition={{ duration: 0.3, delay: 0.5 }}
+                  transition={{ duration: 0.1, delay: 0.5 }}
                   whileHover={{ scale: 1.02, y: -2 }}
                 >
                   <motion.h2 
@@ -74,9 +75,11 @@ export function ContactSection() {
                       whileHover={{ rotate: 5, scale: 1.1 }}
                       transition={{ duration: 0.1 }}
                     >
-                      <img 
+                      <Image 
                         src="/icons/location.svg" 
                         alt="Location" 
+                        width={40}
+                        height={40}
                         className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" 
                       />
                     </motion.div>
@@ -84,7 +87,7 @@ export function ContactSection() {
                       className="text-primary"
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                      transition={{ duration: 0.3, delay: 0.6 }}
+                      transition={{ duration: 0.1, delay: 0.6 }}
                     >
                       VISIT US
                     </motion.span>
@@ -93,7 +96,7 @@ export function ContactSection() {
                     className="font-condensed font-bold text-sm md:text-lg lg:text-xl text-white uppercase tracking-tight leading-tight"
                     initial={{ opacity: 0, y: 10 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                    transition={{ duration: 0.3, delay: 0.7 }}
+                    transition={{ duration: 0.1, delay: 0.7 }}
                   >
                     444 W MAIN ST<br />
                     BOZEMAN, MT 59715
@@ -105,7 +108,7 @@ export function ContactSection() {
                   className="text-center lg:text-left pl-0 md:pl-6"
                   initial={{ opacity: 0, x: 30 }}
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-                  transition={{ duration: 0.3, delay: 0.8 }}
+                  transition={{ duration: 0.1, delay: 0.8 }}
                   whileHover={{ scale: 1.02, y: -2 }}
                 >
                   <motion.h3 
@@ -116,9 +119,11 @@ export function ContactSection() {
                       whileHover={{ rotate: 15, scale: 1.1 }}
                       transition={{ duration: 0.1 }}
                     >
-                      <img 
+                      <Image 
                         src="/icons/hours.svg" 
                         alt="Hours" 
+                        width={40}
+                        height={40}
                         className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" 
                       />
                     </motion.div>
@@ -126,43 +131,43 @@ export function ContactSection() {
                       className="text-primary"
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                      transition={{ duration: 0.3, delay: 0.9 }}
+                      transition={{ duration: 0.1, delay: 0.9 }}
                     >
                       HOURS
                     </motion.span>
                   </motion.h3>
                   <motion.div
-                    className="font-condensed font-bold text-xs md:text-sm lg:text-base text-white uppercase tracking-tight space-y-2"
+                    className="font-condensed font-bold text-sm md:text-lg lg:text-xl text-white uppercase tracking-tight space-y-2"
                     initial={{ opacity: 0, y: 10 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                    transition={{ duration: 0.3, delay: 1.0 }}
+                    transition={{ duration: 0.1, delay: 1.0 }}
                   >
                     <motion.div
                       className="flex items-center justify-center lg:justify-start gap-2"
                       whileHover={{ scale: 1.02, x: 2 }}
                       transition={{ duration: 0.1 }}
                     >
-                      <span className="text-primary font-black text-sm md:text-base">MON–FRI</span>
+                      <span className="text-primary font-black">MON–FRI</span>
                       <span className="text-white/60">:</span>
-                      <span className="text-white text-xs md:text-sm">8h – 18h</span>
+                      <span className="text-white">8h – 18h</span>
                     </motion.div>
                     <motion.div
                       className="flex items-center justify-center lg:justify-start gap-2"
                       whileHover={{ scale: 1.02, x: 2 }}
                       transition={{ duration: 0.1 }}
                     >
-                      <span className="text-primary font-black text-sm md:text-base">SAT</span>
+                      <span className="text-primary font-black">SAT</span>
                       <span className="text-white/60">:</span>
-                      <span className="text-white text-xs md:text-sm">9h – 14h</span>
+                      <span className="text-white">9h – 14h</span>
                     </motion.div>
                     <motion.div
                       className="flex items-center justify-center lg:justify-start gap-2"
                       whileHover={{ scale: 1.02, x: 2 }}
                       transition={{ duration: 0.1 }}
                     >
-                      <span className="text-primary font-black text-sm md:text-base">SUN</span>
+                      <span className="text-primary font-black">SUN</span>
                       <span className="text-white/60">:</span>
-                      <span className="text-white/60 text-xs md:text-sm">CLOSED</span>
+                      <span className="text-white/60">CLOSED</span>
                     </motion.div>
                   </motion.div>
                 </motion.div>
@@ -172,7 +177,7 @@ export function ContactSection() {
                   className="text-center lg:text-left pr-0 md:pr-6 border-r-0 md:border-r border-white/20"
                   initial={{ opacity: 0, x: -30 }}
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-                  transition={{ duration: 0.3, delay: 1.3 }}
+                  transition={{ duration: 0.1, delay: 1.3 }}
                   whileHover={{ scale: 1.05, y: -5 }}
                 >
                   <motion.h3 
@@ -183,9 +188,11 @@ export function ContactSection() {
                       whileHover={{ rotate: 5, scale: 1.1 }}
                       transition={{ duration: 0.1 }}
                     >
-                      <img 
+                      <Image 
                         src="/icons/phone.svg" 
                         alt="Phone" 
+                        width={40}
+                        height={40}
                         className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" 
                       />
                     </motion.div>
@@ -193,7 +200,7 @@ export function ContactSection() {
                       className="text-primary"
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                      transition={{ duration: 0.3, delay: 1.3 }}
+                      transition={{ duration: 0.1, delay: 1.3 }}
                     >
                       CALL US!
                     </motion.span>
@@ -217,7 +224,7 @@ export function ContactSection() {
                   className="text-center lg:text-left pl-0 md:pl-6"
                   initial={{ opacity: 0, x: 30 }}
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-                  transition={{ duration: 0.3, delay: 1.4 }}
+                  transition={{ duration: 0.1, delay: 1.4 }}
                   whileHover={{ scale: 1.05, y: -5 }}
                 >
                   <motion.h3 
@@ -228,9 +235,11 @@ export function ContactSection() {
                       whileHover={{ rotate: 5, scale: 1.1 }}
                       transition={{ duration: 0.1 }}
                     >
-                      <img 
+                      <Image 
                         src="/icons/email.svg" 
                         alt="Email" 
+                        width={40}
+                        height={40}
                         className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" 
                       />
                     </motion.div>
@@ -238,7 +247,7 @@ export function ContactSection() {
                       className="text-primary"
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                      transition={{ duration: 0.3, delay: 1.4 }}
+                      transition={{ duration: 0.1, delay: 1.4 }}
                     >
                       EMAIL US!
                     </motion.span>
@@ -249,7 +258,7 @@ export function ContactSection() {
                   >
                     <motion.a
                       href="mailto:kamalaassab2002@gmail.com"
-                      className="font-condensed font-bold text-xs md:text-base lg:text-lg text-white hover:text-primary transition-colors tracking-tight leading-tight"
+                      className="font-condensed font-bold text-sm md:text-lg lg:text-xl text-white hover:text-primary transition-colors tracking-tight leading-tight"
                       whileHover={{ scale: 1.05 }}
                     >
                       KAMALAASSAB2002@GMAIL.COM

@@ -1,6 +1,5 @@
-import { cn } from "@/lib/utils";
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export const Component = () => {
   const text = "START\u00A0\u00A0\u00A0HERE\u00A0\u00A0\u00A0NOW\u00A0\u00A0\u00A0";
@@ -39,19 +38,23 @@ export const Component = () => {
       </p>
 
       <div className="relative w-[120px] h-[120px] rounded-full text-yellow-400 flex items-center justify-center overflow-hidden">
-        <img
+        <Image
           src="/icons/brake.svg"
           alt="Brake"
-          className="absolute w-28 h-28"
+          width={112}
+          height={112}
+          className="absolute"
           style={{ 
             transform: "translate(0, 0)",
             animation: "icon-rotation 4s linear infinite"
           }}
         />
-        <img
+        <Image
           src="/icons/brake.svg"
           alt="Brake"
-          className="absolute w-28 h-28"
+          width={112}
+          height={112}
+          className="absolute"
           style={{ 
             transform: "translate(-150%, 150%)",
             animation: "icon-rotation 4s linear infinite"

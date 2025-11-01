@@ -14,7 +14,7 @@
 
 ## 🎯 Overview
 
-**BozemanCR LLC** is a premium, high-performance automotive website built for Connecticut's premier European automotive specialist. This modern, responsive website showcases professional automotive services with stunning animations, mobile-first design, and optimized performance.
+**BozemanCR LLC** is a premium, high-performance automotive website built for Montana's premier European automotive specialist. This modern, responsive website showcases professional automotive services with stunning animations, mobile-first design, and optimized performance.
 
 ### 🌟 Key Features
 
@@ -25,6 +25,7 @@
 - **🔧 Performance Optimized** - Fast loading and smooth transitions
 - **♿ Accessible** - WCAG compliant design patterns
 - **🎯 SEO Ready** - Optimized metadata and structure
+- **📅 Booking System** - Professional appointment booking modal
 
 ## 🖼️ Screenshots
 
@@ -57,6 +58,9 @@
 
 ```
 innovative-motorsports/
+├── 📁 config/
+│   ├── site.ts              # Business data & SEO configuration
+│   └── seo-tiers.ts         # SEO feature flags
 ├── 📁 public/
 │   ├── 📁 assets/           # Brand logos and assets
 │   ├── 📁 icons/            # SVG icons (30 optimized icons)
@@ -71,10 +75,15 @@ innovative-motorsports/
 │   │   ├── globals.css      # Global styles and utilities
 │   │   ├── layout.tsx       # Root layout component
 │   │   ├── page.tsx         # Home page
-│   │   └── ClientBody.tsx   # Client-side wrapper
+│   │   ├── sitemap.ts       # Auto-generated sitemap
+│   │   ├── robots.ts        # Robots.txt configuration
+│   │   ├── about/           # About page
+│   │   ├── contact/         # Contact page
+│   │   ├── services/        # Service pages
+│   │   │   └── [slug]/      # Dynamic service pages
+│   │   └── not-found.tsx    # Custom 404 page
 │   ├── 📁 components/       # React components
 │   │   ├── 📁 ui/           # Reusable UI components
-│   │   │   ├── animated-cards-stack.tsx
 │   │   │   ├── button-rotate.tsx
 │   │   │   ├── card-stack.tsx
 │   │   │   └── testimonials-carousel.tsx
@@ -86,6 +95,8 @@ innovative-motorsports/
 │   │   ├── GlobalBackground.tsx
 │   │   ├── HeroSection.tsx
 │   │   ├── InstagramSection.tsx
+│   │   ├── JsonLd.tsx               # JSON-LD injector
+│   │   ├── LocalBusinessJsonLd.tsx  # LocalBusiness schema
 │   │   ├── Navigation.tsx
 │   │   ├── PartnersSection.tsx
 │   │   ├── PerformanceModsSection.tsx
@@ -93,11 +104,15 @@ innovative-motorsports/
 │   │   ├── ScrollToTop.tsx
 │   │   └── ServiceModal.tsx
 │   └── 📁 lib/
+│       ├── seo.ts           # SEO metadata helpers
+│       ├── analytics.ts     # Tracking functions
 │       └── utils.ts         # Utility functions
 ├── 📄 next.config.js        # Next.js configuration
 ├── 📄 tailwind.config.ts    # Tailwind CSS configuration
 ├── 📄 tsconfig.json         # TypeScript configuration
-└── 📄 package.json          # Dependencies and scripts
+├── 📄 package.json          # Dependencies and scripts
+├── 📄 SEO_GUIDE.md          # Complete SEO documentation
+└── 📄 README.md             # This file
 ```
 
 ## 🚀 Getting Started
@@ -216,6 +231,12 @@ npm start
 - **Business Hours**: Professional time display
 - **Contact Methods**: Phone, email, location
 
+### Booking System
+- **Modal Form**: Professional appointment booking interface
+- **Service Selection**: Dropdown with 8+ service types
+- **Responsive Design**: Works on all screen sizes
+- **Success Animation**: Smooth submission feedback
+
 ## 📊 Performance Metrics
 
 - **Lighthouse Score**: 95+ across all categories
@@ -226,18 +247,35 @@ npm start
 
 ## 🎯 SEO Features
 
+### Core SEO Implementation
 - **Meta Tags**: Optimized title, description, and keywords
 - **Open Graph**: Social media sharing optimization
-- **Structured Data**: Schema markup for better search results
+- **Structured Data**: Schema.org LocalBusiness and Service markup
 - **Semantic HTML**: Proper heading hierarchy and landmarks
 - **Alt Tags**: Descriptive alt text for all images
+- **Sitemap**: Auto-generated sitemap.xml for all pages
+- **Robots.txt**: Search engine crawling configuration
+- **Canonical URLs**: Prevent duplicate content issues
+
+### Advanced SEO Configuration
+See **[SEO_GUIDE.md](./SEO_GUIDE.md)** for complete documentation on:
+- Configuring business information in `config/site.ts`
+- Setting up structured data (JSON-LD)
+- Service page SEO optimization
+- Local SEO best practices
+- Analytics tracking setup
+
+### Quick SEO Setup
+1. Edit `config/site.ts` with your business data
+2. Configure `PRIMARY_DOMAIN` for production
+3. Update `PRIMARY_SERVICES` with your offerings
+4. Test with Google Rich Results Test
 
 ## 🔒 Security Features
 
-- **Content Security Policy**: XSS protection
-- **HTTPS Ready**: SSL/TLS configuration
-- **Input Validation**: Form validation and sanitization
-- **Dependency Security**: Regular security updates
+- **HTTPS Ready**: SSL/TLS configuration (handled by hosting provider)
+- **Input Validation**: Form validation and sanitization implemented
+- **Secure Deployment**: Production-ready Next.js security best practices
 
 ## 📱 Browser Support
 
@@ -255,12 +293,6 @@ npm install -g vercel
 vercel
 ```
 
-### Netlify
-```bash
-npm run build
-# Upload dist folder to Netlify
-```
-
 ### Docker
 ```dockerfile
 FROM node:18-alpine
@@ -275,10 +307,9 @@ CMD ["npm", "start"]
 
 ## 📈 Analytics & Monitoring
 
-- **Google Analytics**: Ready for integration
-- **Performance Monitoring**: Core Web Vitals tracking
-- **Error Tracking**: Sentry integration ready
-- **User Behavior**: Heatmap and session recording ready
+- **Analytics Infrastructure**: Stubs ready for GTM/GA4 integration
+- **Performance Optimized**: Next.js automatic code splitting & monitoring
+- **Tracking Ready**: Helper functions in `src/lib/analytics.ts` ready for implementation
 
 ## 🤝 Contributing
 

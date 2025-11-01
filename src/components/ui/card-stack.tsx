@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, useMotionValue, useTransform, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Image from 'next/image';
 
 interface Card {
   id: number;
@@ -163,7 +164,7 @@ export default function CardStack() {
                   exit={{
                     opacity: 0,
                     scale: 0.8,
-                    transition: { duration: 0.2 }
+                    transition: { duration: 0.1 }
                   }}
                   transition={spring}
                   drag={isFront ? 'y' : false}
@@ -185,10 +186,12 @@ export default function CardStack() {
                       : {}
                   }
                 >
-                  <img
+                  <Image
                     src={src}
                     alt={alt}
-                    className="w-full h-full object-cover pointer-events-none select-none"
+                    fill
+                    quality={75}
+                    className="object-cover pointer-events-none select-none"
                     draggable={false}
                   />
                 </motion.li>
@@ -201,22 +204,22 @@ export default function CardStack() {
       {/* Navigation Buttons - More spacing from image edges */}
       <button
         onClick={moveToStart}
-        className="absolute top-1/2 -translate-y-1/2 z-20 group bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 w-10 h-10 sm:w-12 sm:h-12 flex justify-center items-center rounded-full transition-all duration-300 hover:scale-110"
+        className="absolute top-1/2 -translate-y-1/2 z-20 group bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 w-10 h-10 sm:w-12 sm:h-12 flex justify-center items-center rounded-full transition-all duration-150 hover:scale-110"
         style={{ 
           left: 'calc(50% - 175px - 210px)' // Adjusted for larger mobile image (350px/2 = 175px)
         }}
       >
-        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:text-primary transition-colors duration-300" />
+        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:text-primary transition-colors duration-150" />
       </button>
 
       <button
         onClick={moveToEnd}
-        className="absolute top-1/2 -translate-y-1/2 z-20 group bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 w-10 h-10 sm:w-12 sm:h-12 flex justify-center items-center rounded-full transition-all duration-300 hover:scale-110"
+        className="absolute top-1/2 -translate-y-1/2 z-20 group bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 w-10 h-10 sm:w-12 sm:h-12 flex justify-center items-center rounded-full transition-all duration-150 hover:scale-110"
         style={{ 
           right: 'calc(50% - 175px - 210px)' // Adjusted for larger mobile image (350px/2 = 175px)
         }}
       >
-        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:text-primary transition-colors duration-300" />
+        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:text-primary transition-colors duration-150" />
       </button>
     </div>
   );

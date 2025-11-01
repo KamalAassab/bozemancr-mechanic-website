@@ -2,12 +2,15 @@
   "name": "nextjs-shadcn",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=18.17.0"
+  },
   "scripts": {
     "dev": "next dev -H 0.0.0.0 --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "bunx tsc --noEmit && next lint",
-    "format": "bunx biome format --write"
+    "lint": "tsc --noEmit && next lint",
+    "format": "npx biome format --write"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
@@ -19,7 +22,6 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.5.0",
-    "same-runtime": "^0.0.1",
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7"
   },

@@ -4,6 +4,7 @@ import React, { useState, useRef } from "react"
 import { ChevronLeft, ChevronRight, Star } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { motion, useInView } from "framer-motion"
+import Image from "next/image"
 
 const testimonialList = [
   [
@@ -91,11 +92,11 @@ const TestimonialItem: React.FC<TestimonialItemProps> = ({ item }) => {
   const { rating, content, photo, name } = item
   return (
     <motion.div 
-      className="bg-gradient-to-br from-zinc-900/50 to-black/50 border border-white/10 shadow-xl rounded-xl hover:-translate-y-1 h-[200px] sm:h-[280px] duration-300 p-3 sm:p-6 flex flex-col"
+      className="bg-gradient-to-br from-zinc-900/50 to-black/50 border border-white/10 shadow-xl rounded-xl hover:-translate-y-1 h-[200px] sm:h-[280px] duration-150 p-3 sm:p-6 flex flex-col"
       whileHover={{ 
         scale: 1.02, 
         y: -5,
-        transition: { duration: 0.3 }
+        transition: { duration: 0.1 }
       }}
     >
       <motion.div 
@@ -149,19 +150,19 @@ export const TestimonialsCarousel = () => {
           className="text-center mb-4 md:mb-8"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <motion.h2 
             className="font-condensed font-black italic text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl -mb-2 tracking-tight"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.3, delay: 0.4 }}
+            transition={{ duration: 0.1, delay: 0.4 }}
           >
             <motion.span 
               className="text-primary"
               initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-              transition={{ duration: 0.3, delay: 0.6 }}
+              transition={{ duration: 0.1, delay: 0.6 }}
             >
               WE LET OUR WORK DO THE TALKING...
             </motion.span>
@@ -172,7 +173,7 @@ export const TestimonialsCarousel = () => {
           className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mt-4 md:mt-6"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.15, delay: 0.8 }}
         >
           {testimonialList[index].map((item, i) => (
             <motion.div 
@@ -180,7 +181,7 @@ export const TestimonialsCarousel = () => {
               key={i}
               initial={{ opacity: 0, y: 30, scale: 0.9 }}
               animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 30, scale: 0.9 }}
-              transition={{ duration: 0.3, delay: 1.0 + (i * 0.2) }}
+              transition={{ duration: 0.1, delay: 1.0 + (i * 0.2) }}
             >
               <TestimonialItem item={item} />
             </motion.div>
@@ -191,10 +192,10 @@ export const TestimonialsCarousel = () => {
           className="relative flex justify-center items-center my-4 md:my-6"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.3, delay: 1.4 }}
+          transition={{ duration: 0.1, delay: 1.4 }}
         >
           <motion.button
-            className="text-lg bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 w-10 h-10 sm:w-12 sm:h-12 flex justify-center items-center rounded-full mr-3 sm:mr-4 transition-all duration-300"
+            className="text-lg bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 w-10 h-10 sm:w-12 sm:h-12 flex justify-center items-center rounded-full mr-3 sm:mr-4 transition-all duration-150"
             onClick={() => handleControl("prev")}
             whileHover={{ scale: 1.1, y: -2 }}
             whileTap={{ scale: 0.95 }}
@@ -202,7 +203,7 @@ export const TestimonialsCarousel = () => {
             <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
           </motion.button>
           <motion.button
-            className="text-lg bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 w-10 h-10 sm:w-12 sm:h-12 flex justify-center items-center rounded-full transition-all duration-300"
+            className="text-lg bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 w-10 h-10 sm:w-12 sm:h-12 flex justify-center items-center rounded-full transition-all duration-150"
             onClick={() => handleControl("next")}
             whileHover={{ scale: 1.1, y: -2 }}
             whileTap={{ scale: 0.95 }}
@@ -214,9 +215,11 @@ export const TestimonialsCarousel = () => {
         {/* Google Rating Badge */}
         <div className="flex flex-row items-center justify-center gap-2 sm:gap-4 p-3 sm:p-6 max-w-5xl mx-auto my-4 md:my-6">
           <div className="flex items-center flex-shrink-0">
-            <img 
+            <Image 
               src="/icons/certified.svg" 
               alt="Certified Badge" 
+              width={96}
+              height={96}
               className="w-8 h-8 sm:w-20 sm:h-20 md:w-24 md:h-24"
             />
           </div>

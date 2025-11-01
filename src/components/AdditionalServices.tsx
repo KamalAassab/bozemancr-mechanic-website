@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { WrenchIcon, Activity as ActivityIcon } from "lucide-react";
 import { ServiceModal } from "./ServiceModal";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 
 export function AdditionalServices() {
   const ref = useRef(null);
@@ -75,7 +76,7 @@ export function AdditionalServices() {
           className="text-center mb-8 sm:mb-16"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <motion.h2 
             className="font-condensed font-black italic text-3xl sm:text-4xl md:text-6xl lg:text-7xl -mb-2 tracking-tight"
@@ -107,12 +108,12 @@ export function AdditionalServices() {
           className="grid grid-cols-1 lg:grid-cols-2 gap-4 max-w-7xl mx-auto mb-8 sm:mb-16"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.15, delay: 0.8 }}
         >
           {/* Maintenance Card */}
           <motion.div 
             data-service="maintenance"
-            className="group relative bg-black border-2 border-primary/20 hover:border-primary/60 transition-all duration-500 overflow-hidden transform hover:scale-105 hover:rotate-1 hover:skew-x-1 cursor-pointer card-no-glow"
+            className="group relative bg-black border-2 border-primary/20 hover:border-primary/60 transition-all duration-150 overflow-hidden transform hover:scale-105 hover:rotate-1 hover:skew-x-1 cursor-pointer card-no-glow"
             onClick={() => handleCardClick('maintenance')}
             initial={{ opacity: 0, x: -50, scale: 0.9 }}
             animate={isInView ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: -50, scale: 0.9 }}
@@ -128,12 +129,12 @@ export function AdditionalServices() {
             <div className="flex h-36 sm:h-48">
               {/* Left Half - Image */}
               <div className="w-2/5 relative overflow-hidden">
-                <div
-                  className="absolute inset-0 bg-cover bg-center grayscale"
-              style={{
-                    backgroundImage: 'url(/images/vehicles/car-maintenance.jpg)',
-                    filter: 'grayscale(100%) brightness(0.6) contrast(1.2)',
-                  }}
+                <Image
+                  src="/images/vehicles/car-maintenance.jpg"
+                  alt="Maintenance Service"
+                  fill
+                  quality={75}
+                  className="object-cover grayscale brightness-[0.6] contrast-[1.2]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
                 
@@ -146,22 +147,22 @@ export function AdditionalServices() {
               {/* Right Half - Content */}
               <div className="w-3/5 bg-gradient-to-br from-black via-black/95 to-black/90 p-3 sm:p-6 flex flex-col justify-center relative">
                 {/* Aggressive Border Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-150"></div>
                 
                 <div className="relative z-10">
                   {/* Title with Icon */}
                   <div className="flex items-center gap-2 sm:gap-4 mb-1 sm:mb-2">
-                    <ActivityIcon className="w-5 h-5 sm:w-8 sm:h-8 text-primary group-hover:text-white group-hover:scale-125 group-hover:rotate-12 transition-all duration-500" />
-                    <h3 className="font-condensed font-black text-lg sm:text-3xl text-white uppercase tracking-tight group-hover:text-primary transition-all duration-500">
+                    <ActivityIcon className="w-5 h-5 sm:w-8 sm:h-8 text-primary group-hover:text-white group-hover:scale-125 group-hover:rotate-12 transition-all duration-150" />
+                    <h3 className="font-condensed font-black text-lg sm:text-3xl text-white uppercase tracking-tight group-hover:text-primary transition-all duration-150">
                       MAINTENANCE
                     </h3>
                   </div>
                   
-                  <p className="text-white text-xs sm:text-base mb-1 sm:mb-2 italic font-black uppercase tracking-wide group-hover:text-primary group-hover:scale-105 group-hover:skew-x-2 transition-all duration-500">
+                  <p className="text-white text-xs sm:text-base mb-1 sm:mb-2 italic font-black uppercase tracking-wide group-hover:text-primary group-hover:scale-105 group-hover:skew-x-2 transition-all duration-150">
                     10 CC's of fluids STAT!
                   </p>
                   
-                  <p className="text-white/90 text-xs leading-tight font-medium group-hover:text-white group-hover:scale-102 transition-all duration-500">
+                  <p className="text-white/90 text-xs leading-tight font-medium group-hover:text-white group-hover:scale-102 transition-all duration-150">
                     We can perform any and every type of oil and fluid service to keep your car running right.
                   </p>
                 </div>
@@ -172,7 +173,7 @@ export function AdditionalServices() {
           {/* Repairs Card */}
           <motion.div 
             data-service="repairs"
-            className="group relative bg-black border-2 border-primary/20 hover:border-primary/60 transition-all duration-500 overflow-hidden transform hover:scale-105 hover:-rotate-1 hover:-skew-x-1 cursor-pointer card-no-glow"
+            className="group relative bg-black border-2 border-primary/20 hover:border-primary/60 transition-all duration-150 overflow-hidden transform hover:scale-105 hover:-rotate-1 hover:-skew-x-1 cursor-pointer card-no-glow"
             onClick={() => handleCardClick('repairs')}
             initial={{ opacity: 0, x: 50, scale: 0.9 }}
             animate={isInView ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: 50, scale: 0.9 }}
@@ -188,12 +189,12 @@ export function AdditionalServices() {
             <div className="flex h-36 sm:h-48">
               {/* Left Half - Image */}
               <div className="w-2/5 relative overflow-hidden">
-                <div
-                  className="absolute inset-0 bg-cover bg-center grayscale"
-              style={{
-                    backgroundImage: 'url(/images/vehicles/car-repair.jpg)',
-                    filter: 'grayscale(100%) brightness(0.6) contrast(1.2)',
-                  }}
+                <Image
+                  src="/images/vehicles/car-repair.jpg"
+                  alt="Repair Service"
+                  fill
+                  quality={75}
+                  className="object-cover grayscale brightness-[0.6] contrast-[1.2]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
                 
@@ -206,22 +207,22 @@ export function AdditionalServices() {
               {/* Right Half - Content */}
               <div className="w-3/5 bg-gradient-to-br from-black via-black/95 to-black/90 p-3 sm:p-6 flex flex-col justify-center relative">
                 {/* Aggressive Border Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-150"></div>
                 
                 <div className="relative z-10">
                   {/* Title with Icon */}
                   <div className="flex items-center gap-2 sm:gap-4 mb-1 sm:mb-2">
-                    <WrenchIcon className="w-5 h-5 sm:w-8 sm:h-8 text-primary group-hover:text-white group-hover:scale-125 group-hover:-rotate-12 transition-all duration-500" />
-                    <h3 className="font-condensed font-black text-lg sm:text-3xl text-white uppercase tracking-tight group-hover:text-primary transition-all duration-500">
+                    <WrenchIcon className="w-5 h-5 sm:w-8 sm:h-8 text-primary group-hover:text-white group-hover:scale-125 group-hover:-rotate-12 transition-all duration-150" />
+                    <h3 className="font-condensed font-black text-lg sm:text-3xl text-white uppercase tracking-tight group-hover:text-primary transition-all duration-150">
                       REPAIRS
                     </h3>
                   </div>
                   
-                  <p className="text-white text-xs sm:text-base mb-1 sm:mb-2 italic font-black uppercase tracking-wide group-hover:text-primary group-hover:scale-105 group-hover:-skew-x-2 transition-all duration-500">
+                  <p className="text-white text-xs sm:text-base mb-1 sm:mb-2 italic font-black uppercase tracking-wide group-hover:text-primary group-hover:scale-105 group-hover:-skew-x-2 transition-all duration-150">
                     Prognosis Positive!
                   </p>
                   
-                  <p className="text-white/90 text-xs leading-tight font-medium group-hover:text-white group-hover:scale-102 transition-all duration-500">
+                  <p className="text-white/90 text-xs leading-tight font-medium group-hover:text-white group-hover:scale-102 transition-all duration-150">
                     Our staff of certified mechanics can diagnose any issue, walk you through the issue and provide a quote.
                   </p>
                 </div>
@@ -236,54 +237,54 @@ export function AdditionalServices() {
           className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-6 max-w-6xl mx-auto"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8, delay: 1.4 }}
+          transition={{ duration: 0.15, delay: 1.4 }}
         >
           <ServiceIcon 
-            icon={<img src="/icons/diagnostic.svg" alt="Computer Diagnostics" className="w-12 h-12 sm:w-16 sm:h-16" />} 
+            icon={<Image src="/icons/diagnostic.svg" alt="Computer Diagnostics" width={64} height={64} className="w-12 h-12 sm:w-16 sm:h-16" />} 
             label="Complete Computer Diagnostics" 
           />
           <ServiceIcon 
-            icon={<img src="/icons/safety.svg" alt="Safety Analysis" className="w-12 h-12 sm:w-16 sm:h-16" />} 
+            icon={<Image src="/icons/safety.svg" alt="Safety Analysis" width={64} height={64} className="w-12 h-12 sm:w-16 sm:h-16" />} 
             label="Complete Safety Analysis" 
           />
           <ServiceIcon 
-            icon={<img src="/icons/problems.svg" alt="Drivability Problems" className="w-12 h-12 sm:w-16 sm:h-16" />} 
+            icon={<Image src="/icons/problems.svg" alt="Drivability Problems" width={64} height={64} className="w-12 h-12 sm:w-16 sm:h-16" />} 
             label="Drivability Problems" 
           />
           <ServiceIcon 
-            icon={<img src="/icons/performance.svg" alt="Performance Tunes" className="w-12 h-12 sm:w-16 sm:h-16" />} 
+            icon={<Image src="/icons/performance.svg" alt="Performance Tunes" width={64} height={64} className="w-12 h-12 sm:w-16 sm:h-16" />} 
             label="Performance Tunes" 
           />
           <ServiceIcon 
-            icon={<img src="/icons/carbon.svg" alt="Carbon Cleaning" className="w-12 h-12 sm:w-16 sm:h-16" />} 
+            icon={<Image src="/icons/carbon.svg" alt="Carbon Cleaning" width={64} height={64} className="w-12 h-12 sm:w-16 sm:h-16" />} 
             label="Carbon Cleaning" 
           />
           <ServiceIcon 
-            icon={<img src="/icons/oil.svg" alt="Oil Changes" className="w-12 h-12 sm:w-16 sm:h-16" />} 
+            icon={<Image src="/icons/oil.svg" alt="Oil Changes" width={64} height={64} className="w-12 h-12 sm:w-16 sm:h-16" />} 
             label="Oil Changes" 
           />
           <ServiceIcon 
-            icon={<img src="/icons/tire.svg" alt="Tire Services" className="w-12 h-12 sm:w-16 sm:h-16" />} 
+            icon={<Image src="/icons/tire.svg" alt="Tire Services" width={64} height={64} className="w-12 h-12 sm:w-16 sm:h-16" />} 
             label="Tire Mounting & Rotation" 
           />
           <ServiceIcon 
-            icon={<img src="/icons/brake.svg" alt="Brake Services" className="w-12 h-12 sm:w-16 sm:h-16" />} 
+            icon={<Image src="/icons/brake.svg" alt="Brake Services" width={64} height={64} className="w-12 h-12 sm:w-16 sm:h-16" />} 
             label="Brake Pads and Rotors" 
           />
           <ServiceIcon 
-            icon={<img src="/icons/steering.svg" alt="Steering Services" className="w-12 h-12 sm:w-16 sm:h-16" />} 
+            icon={<Image src="/icons/steering.svg" alt="Steering Services" width={64} height={64} className="w-12 h-12 sm:w-16 sm:h-16" />} 
             label="Steering and Suspensions" 
           />
           <ServiceIcon 
-            icon={<img src="/icons/alignments.svg" alt="Alignments" className="w-12 h-12 sm:w-16 sm:h-16" />} 
+            icon={<Image src="/icons/alignments.svg" alt="Alignments" width={64} height={64} className="w-12 h-12 sm:w-16 sm:h-16" />} 
             label="Alignments" 
           />
           <ServiceIcon 
-            icon={<img src="/icons/exaust.svg" alt="Exhaust Services" className="w-12 h-12 sm:w-16 sm:h-16" />} 
+            icon={<Image src="/icons/exaust.svg" alt="Exhaust Services" width={64} height={64} className="w-12 h-12 sm:w-16 sm:h-16" />} 
             label="Mufflers and Exhaust Systems" 
           />
           <ServiceIcon 
-            icon={<img src="/icons/more.svg" alt="More Services" className="w-12 h-12 sm:w-16 sm:h-16" />} 
+            icon={<Image src="/icons/more.svg" alt="More Services" width={64} height={64} className="w-12 h-12 sm:w-16 sm:h-16" />} 
             label="And Much More!" 
           />
         </motion.div>
@@ -307,7 +308,7 @@ function ServiceIcon({ icon, label }: { icon: React.ReactNode; label: string }) 
       className="flex flex-col items-center text-center group"
       initial={{ opacity: 0, scale: 0.8, y: 30 }}
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ duration: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
       whileHover={{ 
         scale: 1.1, 
         y: -5,
@@ -315,7 +316,7 @@ function ServiceIcon({ icon, label }: { icon: React.ReactNode; label: string }) 
       }}
     >
       <motion.div 
-        className="w-12 h-12 sm:w-20 sm:h-20 flex items-center justify-center mb-2 sm:mb-3 transition-all duration-200 group-hover:scale-110"
+        className="w-12 h-12 sm:w-20 sm:h-20 flex items-center justify-center mb-2 sm:mb-3 transition-all duration-100 group-hover:scale-110"
         whileHover={{ 
           rotate: 5, 
           scale: 1.2,

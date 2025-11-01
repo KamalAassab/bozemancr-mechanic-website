@@ -113,7 +113,7 @@ export function PerformanceModsSection() {
             className="text-left lg:pl-20 flex-1 mb-8 lg:mb-0"
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <div className="space-y-4 sm:space-y-6">
               {/* Main Headlines */}
@@ -159,7 +159,7 @@ export function PerformanceModsSection() {
             className="flex flex-col space-y-4 md:hidden w-full -mt-8"
             initial={{ opacity: 0, y: 50 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-            transition={{ duration: 0.4, delay: 0.6 }}
+            transition={{ duration: 0.1, delay: 0.6 }}
           >
             {services.map((service, index) => (
               <motion.div
@@ -179,7 +179,7 @@ export function PerformanceModsSection() {
                   className="flex items-center justify-between mb-3"
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.4, delay: 1.6 + (index * 0.2) }}
+                  transition={{ duration: 0.1, delay: 1.6 + (index * 0.2) }}
                 >
                   <motion.h3 
                     className="text-white font-condensed font-black italic text-xl uppercase tracking-tight"
@@ -206,7 +206,7 @@ export function PerformanceModsSection() {
                   className="grid grid-cols-2 gap-2"
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.4, delay: 1.8 + (index * 0.2) }}
+                  transition={{ duration: 0.1, delay: 1.8 + (index * 0.2) }}
                 >
                   {service.content.features.map((feature, featureIndex) => (
                     <motion.div 
@@ -272,7 +272,7 @@ export function PerformanceModsSection() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
               transition={{ 
-                duration: 0.4, 
+                duration: 0.1, 
                 ease: [0.25, 0.46, 0.45, 0.94],
                 type: "spring",
                 stiffness: 300,
@@ -286,7 +286,7 @@ export function PerformanceModsSection() {
               className="absolute top-6 right-6 z-10 w-16 h-16 flex items-center justify-center text-black"
               whileHover={{ scale: 1.1, rotate: 90 }}
               whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
+              transition={{ duration: 0.1, ease: "easeOut" }}
             >
               <FaTools className="w-10 h-10" />
             </motion.button>
@@ -295,14 +295,14 @@ export function PerformanceModsSection() {
               className="flex flex-col lg:flex-row h-auto lg:h-[80vh] max-h-[600px]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.1, duration: 0.4 }}
+              transition={{ delay: 0.1, duration: 0.1 }}
             >
               {/* Left Column - Navigation */}
               <motion.div 
                 className="w-full lg:w-1/3 relative bg-black border-8 border-white"
                 initial={{ x: -50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.4, ease: "easeOut" }}
+                transition={{ delay: 0.3, duration: 0.1, ease: "easeOut" }}
               >
                 <div className="p-6 h-full flex flex-col">
                   <motion.h3 
@@ -318,7 +318,7 @@ export function PerformanceModsSection() {
                       <motion.button
                         key={service.id}
                         onClick={() => setSelectedService(service.id)}
-                        className={`w-full text-left p-4 transition-all duration-300 font-bold text-lg border-l-4 ${
+                        className={`w-full text-left p-4 transition-all duration-150 font-bold text-lg border-l-4 ${
                           selectedService === service.id
                             ? "bg-yellow-400 text-black border-l-yellow-400"
                             : "text-white border-l-transparent hover:border-l-yellow-400 hover:bg-yellow-400/10"
@@ -341,7 +341,7 @@ export function PerformanceModsSection() {
                 className="w-full lg:w-1/3 bg-white border-8 border-white"
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.4, ease: "easeOut" }}
+                transition={{ delay: 0.2, duration: 0.1, ease: "easeOut" }}
               >
                 <div className="p-8 h-full flex flex-col">
                   {(() => {
@@ -387,7 +387,7 @@ export function PerformanceModsSection() {
                                 <motion.div 
                                   className="w-4 h-4 bg-yellow-400 rounded-full mr-3 flex items-center justify-center"
                                   whileHover={{ scale: 1.2, rotate: 180 }}
-                                  transition={{ duration: 0.2 }}
+                                  transition={{ duration: 0.1 }}
                                 >
                                   <span className="text-black font-bold text-xs">✓</span>
                                 </motion.div>
@@ -407,7 +407,7 @@ export function PerformanceModsSection() {
                 className="w-full lg:w-1/3 bg-gray-100 border-8 border-white relative"
                 initial={{ x: 50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.4, ease: "easeOut" }}
+                transition={{ delay: 0.5, duration: 0.1, ease: "easeOut" }}
               >
                 <div className="p-6 h-full flex flex-col justify-between">
                   {/* Description */}
@@ -415,7 +415,7 @@ export function PerformanceModsSection() {
                     className="flex-1 flex items-center justify-center"
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 0.4, duration: 0.4 }}
+                    transition={{ delay: 0.4, duration: 0.1 }}
                   >
                     {(() => {
                       const currentService = services.find(s => s.id === selectedService);
@@ -438,7 +438,7 @@ export function PerformanceModsSection() {
                     className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-condensed font-black italic text-lg uppercase py-4 px-4 text-center"
                     initial={{ y: 30, opacity: 0, scale: 0.9 }}
                     animate={{ y: 0, opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.5, duration: 0.4, ease: "easeOut" }}
+                    transition={{ delay: 0.5, duration: 0.1, ease: "easeOut" }}
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                   >

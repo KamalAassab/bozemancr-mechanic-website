@@ -27,7 +27,7 @@ export function AboutSection() {
     {
       year: "2020",
       title: "RECOGNITION",
-      description: "Became Connecticut's premier automotive specialist, trusted by enthusiasts and professionals alike.",
+      description: "Became Montana's premier automotive specialist, trusted by enthusiasts and professionals alike.",
       icon: "/icons/recognition.svg",
       highlight: "Excellence"
     },
@@ -49,7 +49,7 @@ export function AboutSection() {
             className="text-center"
             initial={{ opacity: 0, y: 50 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <motion.p 
               className="text-white text-lg sm:text-2xl md:text-3xl uppercase tracking-tighter mb-2 font-black italic"
@@ -71,7 +71,7 @@ export function AboutSection() {
             className="text-center mb-12 md:mb-16"
             initial={{ opacity: 0, y: 50 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <motion.h2 
               className="font-condensed font-black italic text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight mb-6"
@@ -102,7 +102,7 @@ export function AboutSection() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.15, delay: 0.5 }}
             >
-              FROM HUMBLE BEGINNINGS TO INDUSTRY LEADERSHIP, DISCOVER THE JOURNEY THAT MADE US CONNECTICUT'S PREMIER AUTOMOTIVE SPECIALIST.
+              FROM HUMBLE BEGINNINGS TO INDUSTRY LEADERSHIP, DISCOVER THE JOURNEY THAT MADE US MONTANA'S PREMIER AUTOMOTIVE SPECIALIST.
             </motion.p>
           </motion.div>
 
@@ -111,12 +111,12 @@ export function AboutSection() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
             initial={{ opacity: 0, y: 50 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-            transition={{ duration: 0.4, delay: 0.6 }}
+            transition={{ duration: 0.1, delay: 0.6 }}
           >
             {storyCards.map((card, index) => (
               <motion.div
                 key={index}
-                className="group relative bg-gradient-to-br from-zinc-900/80 to-black/80 border border-white/10 rounded-xl p-6 hover:border-primary/40 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20"
+                className="group relative bg-gradient-to-br from-zinc-900/80 to-black/80 border border-white/10 rounded-xl p-6 hover:border-primary/40 transition-all duration-150 hover:shadow-2xl hover:shadow-primary/20"
                 initial={{ opacity: 0, y: 30, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 30, scale: 0.9 }}
                 transition={{ duration: 0.15, delay: 0.7 + (index * 0.2) }}
@@ -127,7 +127,7 @@ export function AboutSection() {
                 }}
               >
                 {/* Card Background Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-150" />
                 
                 {/* Year Badge */}
                 <motion.div 
@@ -158,7 +158,7 @@ export function AboutSection() {
                       />
                     </motion.div>
                     <motion.h3 
-                      className="font-condensed font-black italic text-lg sm:text-xl text-white group-hover:text-primary transition-colors duration-300"
+                      className="font-condensed font-black italic text-lg sm:text-xl text-white group-hover:text-primary transition-colors duration-150"
                       whileHover={{ scale: 1.05 }}
                     >
                       {card.title}
@@ -166,7 +166,7 @@ export function AboutSection() {
                   </motion.div>
                   
                   <motion.p 
-                    className="text-white/70 text-sm leading-relaxed font-roboto group-hover:text-white/90 transition-colors duration-300"
+                    className="text-white/70 text-sm leading-relaxed font-roboto group-hover:text-white/90 transition-colors duration-150"
                     whileHover={{ scale: 1.02 }}
                   >
                     {card.description}
@@ -186,7 +186,7 @@ export function AboutSection() {
 
                 {/* Hover Effect Line */}
                 <motion.div 
-                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-primary to-transparent w-0 group-hover:w-full transition-all duration-500"
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-primary to-transparent w-0 group-hover:w-full transition-all duration-150"
                   initial={{ width: 0 }}
                   whileHover={{ width: "100%" }}
                 />
@@ -226,12 +226,12 @@ export function AboutSection() {
                   >
                     <motion.a
                       href="tel:12345678910"
-                      className="group relative inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-primary via-primary to-primary/90 hover:from-primary/90 hover:via-primary hover:to-primary text-white font-condensed font-black italic text-xs sm:text-sm md:text-base px-4 sm:px-6 py-3 sm:py-4 transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-primary/50 border-2 border-primary/30 hover:border-primary/60 tracking-tight rounded-2xl overflow-hidden w-full sm:w-auto min-w-[160px] sm:min-w-[180px] justify-center"
+                      className="group relative inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-primary via-primary to-primary/90 hover:from-primary/90 hover:via-primary hover:to-primary text-white font-condensed font-black italic text-xs sm:text-sm md:text-base px-4 sm:px-6 py-3 sm:py-4 transition-all duration-150 transform hover:scale-105 shadow-2xl shadow-primary/50 border-2 border-primary/30 hover:border-primary/60 tracking-tight rounded-2xl overflow-hidden w-full sm:w-auto min-w-[160px] sm:min-w-[180px] justify-center"
                       whileHover={{ scale: 1.05, y: -3 }}
                       whileTap={{ scale: 0.95 }}
                     >
                       {/* Button Background Effect */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-100" />
                       
                       {/* Button Content */}
                       <motion.div 
@@ -244,7 +244,7 @@ export function AboutSection() {
                         />
                         <span className="text-center">START YOUR JOURNEY TODAY</span>
                         <motion.div 
-                          className="w-0 h-0 border-l-3 border-l-transparent border-r-3 border-r-transparent border-t-3 border-t-white group-hover:rotate-12 transition-transform duration-300"
+                          className="w-0 h-0 border-l-3 border-l-transparent border-r-3 border-r-transparent border-t-3 border-t-white group-hover:rotate-12 transition-transform duration-150"
                         />
                       </motion.div>
                     </motion.a>

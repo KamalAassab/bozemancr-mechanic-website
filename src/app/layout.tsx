@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { Roboto, Roboto_Condensed } from "next/font/google";
 import "./globals.css";
-import ClientBody from "./ClientBody";
+import { buildMetadata } from "@/lib/seo";
 
 const roboto = Roboto({
   variable: "--font-roboto",
   subsets: ["latin"],
   weight: ["400", "700", "900"],
   style: ["normal"],
+  display: "swap",
 });
 
 const robotoCondensed = Roboto_Condensed({
@@ -15,11 +16,16 @@ const robotoCondensed = Roboto_Condensed({
   subsets: ["latin"],
   weight: ["400", "700", "900"],
   style: ["normal"],
+  display: "swap",
+});
+
+const baseMetadata = buildMetadata("home", {
+  description: "Montana's premier European automotive specialist in Bozeman. Performance tuning, diagnostics, and expert repairs for all makes and models.",
+  includeLocation: true,
 });
 
 export const metadata: Metadata = {
-  title: "BozemanCR LLC - Milford CT",
-  description: "Connecticut's No.1 premier European automotive specialist. We specialize in all makes and models. No job is too big or too small for our high-end facility.",
+  ...baseMetadata,
   icons: {
     icon: "/icons/favicon.svg",
     shortcut: "/icons/favicon.svg",
@@ -37,7 +43,7 @@ export default function RootLayout({
       <head>
       </head>
       <body suppressHydrationWarning className="antialiased overflow-x-hidden">
-        <ClientBody>{children}</ClientBody>
+        {children}
       </body>
     </html>
   );

@@ -44,13 +44,13 @@ export function PolicyModal({ isOpen, onClose, policy }: PolicyModalProps) {
 
   return (
     <div 
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md transition-all duration-500 ease-out ${
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md transition-all duration-150 ease-out ${
         isClosing ? 'opacity-0' : 'opacity-100'
       }`}
       onClick={handleBackdropClick}
     >
       <div 
-        className={`relative w-full max-w-4xl mx-4 bg-black border-2 border-primary overflow-hidden shadow-2xl transform transition-all duration-500 ease-out max-h-[85vh] ${
+        className={`relative w-full max-w-4xl mx-4 bg-black border-2 border-primary overflow-hidden shadow-2xl transform transition-all duration-150 ease-out max-h-[85vh] ${
           isClosing ? 'scale-95 opacity-0 translate-y-8' : 'scale-100 opacity-100 translate-y-0'
         }`}
         onClick={(e) => e.stopPropagation()}
@@ -58,27 +58,27 @@ export function PolicyModal({ isOpen, onClose, policy }: PolicyModalProps) {
         {/* Close Button */}
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 z-10 w-12 h-12 flex items-center justify-center text-white transition-all duration-300 hover:scale-110 hover:rotate-90"
+          className="absolute top-4 right-4 z-10 w-12 h-12 flex items-center justify-center text-white transition-all duration-150 hover:scale-110 hover:rotate-90"
         >
           <FaTools className="w-8 h-8" />
         </button>
 
         <div className="p-6 lg:p-8 overflow-y-auto max-h-[85vh]">
           {/* Header */}
-          <div className={`mb-6 transition-all duration-700 ease-out delay-200 ${
+          <div className={`mb-6 transition-all duration-100 ease-out delay-200 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}>
             <h1 className="font-condensed font-black italic text-4xl lg:text-5xl text-primary uppercase mb-3 tracking-tight">
               {policy.title}
             </h1>
-            <div className={`w-20 h-1 bg-primary transition-all duration-700 ease-out delay-300 ${
+            <div className={`w-20 h-1 bg-primary transition-all duration-100 ease-out delay-300 ${
               isVisible ? 'scale-x-100' : 'scale-x-0'
             }`}></div>
           </div>
 
           {/* Content */}
           <div 
-            className={`prose prose-base max-w-none font-roboto text-white space-y-4 transition-all duration-700 ease-out delay-400 ${
+            className={`prose prose-base max-w-none font-roboto text-white space-y-4 transition-all duration-100 ease-out delay-400 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
             dangerouslySetInnerHTML={{ __html: policy.content }}
