@@ -18,7 +18,7 @@ const testimonialList = [
       photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D",
       name: "ANDRÉ ALLEN",
       rating: 5,
-      content: "I met the owner (Alex) at a car show and he gave me a run down on the problems I was having with my car build. Alex then took the time to use a scan tool to run a diagnostic check. Most places charge an arm and a leg, but instead he gave a business card. Later they scheduled me in ASAP, and even stayed late at the shop because I was stuck in traffic. He and the crew at innovative motorsports worked tirelessly for a week to get all of the parts installed. I fell in love all over again with my old GTI because of these guy's efforts. Highly recommended for anyone looking to tune, maintain, or repair their European car!",
+      content: "I met the owner (Alex) at a car show and he gave me a run down on the problems I was having with my car build. Alex then took the time to use a scan tool to run a diagnostic check. Most places charge an arm and a leg, but instead he gave a business card. Later they scheduled me in ASAP, and even stayed late at the shop because I was stuck in traffic. He and the crew at innovative motorsports worked tirelessly for a week to get all of the parts installed. I fell in love all over again with my old GTI because of these guy's efforts. Highly recommended for anyone looking to tune, maintain, or repair their car!",
     },
   ],
   [

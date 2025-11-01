@@ -3,7 +3,7 @@ import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "../../../config/site";
 
 export const metadata: Metadata = buildMetadata("about", {
-  description: `Learn about ${siteConfig.BUSINESS_NAME} - your trusted partner for European auto repair in ${siteConfig.CITY}, ${siteConfig.STATE}.`,
+  description: `Learn about ${siteConfig.BUSINESS_NAME} - your trusted partner for auto repair in ${siteConfig.CITY}, ${siteConfig.STATE}.`,
   includeLocation: true,
 });
 

@@ -20,7 +20,6 @@ const robotoCondensed = Roboto_Condensed({
 });
 
 const baseMetadata = buildMetadata("home", {
-  description: "Montana's premier European automotive specialist in Bozeman. Performance tuning, diagnostics, and expert repairs for all makes and models.",
   includeLocation: true,
 });
 

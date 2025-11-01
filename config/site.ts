@@ -12,7 +12,7 @@
 export const siteConfig = {
   // Business Identity
   BUSINESS_NAME: "BozemanCR",
-  TAGLINE: "Premier European Auto Repair", // Optional brand tagline
+  TAGLINE: "Premier Auto Repair", // Optional brand tagline
   
   // Location
   CITY: "Bozeman",
@@ -91,11 +91,11 @@ export const siteConfig = {
   ],
   
   // SEO Keywords (primary keyword for title generation)
-  PRIMARY_KEYWORD: "European Auto Repair",
+  PRIMARY_KEYWORD: "Auto Repair",
   SECONDARY_KEYWORDS: ["Auto Repair", "Car Maintenance", "Performance Tuning"],
   
   // Default Meta Description Template
-  DEFAULT_DESCRIPTION: "Montana's premier European automotive specialist in Bozeman. Performance tuning, diagnostics, and expert repairs for all makes and models.",
+  DEFAULT_DESCRIPTION: "Montana's premier automotive specialist in Bozeman. Performance tuning, diagnostics, and expert repairs for all makes and models.",
   
   // Google Maps Link
   GOOGLE_MAPS_URL: "https://maps.app.goo.gl/wx6KKraeJDS2t1ZY9",

@@ -8,13 +8,13 @@
 
 Your website now has:
 
-1. **Perfect SEO Title**: "BozemanCR | European Auto Repair in Bozeman, MT"
+1. **Perfect SEO Title**: "BozemanCR | Auto Repair in Bozeman, MT"
    - Brand name first (good for exact searches)
    - Location + keywords (good for local SEO)
    - Under 60 characters (Google's limit)
 
 2. **Optimized Meta Description**: 
-   - "Montana's premier European automotive specialist in Bozeman..."
+   - "Montana's premier automotive specialist in Bozeman..."
    - Includes location and keywords
    - Between 140-160 characters
 
@@ -55,7 +55,7 @@ Your website now has:
      - Address: 444 W Main St, Bozeman, MT 59715
      - Phone: Same as website
      - Hours: Same as website
-   - Add categories: Auto Repair Shop, European Auto Service
+   - Add categories: Auto Repair Shop, Performance Tuning
    - Upload photos
 
 4. **Get Listed in Business Directories**
@@ -75,7 +75,7 @@ Your website now has:
 
 6. **Content Marketing**
    - Blog about car care tips
-   - "Top 10 European Car Maintenance Tips"
+   - "Top 10 Car Maintenance Tips"
    - "Why Choose BozemanCR"
    - Regular updates keep Google crawling
 
@@ -94,7 +94,7 @@ Your website now has:
 
 9. **Local SEO**
    - "BozemanCR Bozeman" should rank
-   - "European auto repair Montana"
+   - "Auto repair Montana"
    - "Performance tuning Bozeman"
 
 10. **Technical SEO Monitoring**
@@ -137,17 +137,17 @@ Your website now has:
 ### Easy Wins (Month 1-2)
 - ✅ Appear when someone searches "BozemanCR"
 - ✅ Appear in Google Maps when searching nearby
-- ✅ Show up for "European auto repair Bozeman"
+- ✅ Show up for "auto repair Bozeman"
 
 ### Medium Goals (Month 3-6)
 - ✅ #1 for "BozemanCR Bozeman"
-- ✅ First page for "European car repair Montana"
+- ✅ First page for "car repair Montana"
 - ✅ Local pack appearance
 
 ### Stretch Goals (Month 6-12)
 - ✅ #1 for "BozemanCR"
-- ✅ #1 for "European auto repair Bozeman"
-- ✅ Dominating local European car services
+- ✅ #1 for "auto repair Bozeman"
+- ✅ Dominating local car services
 
 ## 🔍 Competitive Analysis
 

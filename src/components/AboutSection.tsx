@@ -34,7 +34,7 @@ export function AboutSection() {
     {
       year: "2024",
       title: "INNOVATION",
-      description: "Leading the industry with cutting-edge technology and unmatched expertise in European performance.",
+      description: "Leading the industry with cutting-edge technology and unmatched expertise in automotive performance.",
       icon: "/icons/innovation.svg",
       highlight: "Innovation"
     }

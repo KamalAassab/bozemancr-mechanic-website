@@ -13,7 +13,7 @@ export function FAQSection() {
   const faqs = [
     {
       question: "What types of vehicles do you work on?",
-      answer: "We specialize in European automotive makes and models, including but not limited to: Audi, BMW, Mercedes-Benz, Volkswagen, Porsche, Mini, Volvo, and Jaguar. We also work on performance-oriented Japanese vehicles. Our expertise covers both standard maintenance and high-performance modifications."
+      answer: "We work on all automotive makes and models, including Audi, BMW, Mercedes-Benz, Volkswagen, Porsche, Mini, Volvo, Jaguar, Ford, Chevrolet, Toyota, Honda, and more. We also specialize in performance-oriented vehicles. Our expertise covers both standard maintenance and high-performance modifications."
     },
     {
       question: "Do you offer warranties on your work?",
@@ -21,7 +21,7 @@ export function FAQSection() {
     },
     {
       question: "How long does a typical diagnostic take?",
-      answer: "Most basic diagnostics can be completed within 1-2 hours. More complex issues may require 4-6 hours. We use state-of-the-art diagnostic equipment including VCDS (VAG-COM) and other specialized European diagnostic tools to ensure accurate and efficient problem identification. We'll always provide a time estimate before starting any diagnostic work."
+      answer: "Most basic diagnostics can be completed within 1-2 hours. More complex issues may require 4-6 hours. We use state-of-the-art diagnostic equipment including VCDS (VAG-COM) and other specialized diagnostic tools to ensure accurate and efficient problem identification. We'll always provide a time estimate before starting any diagnostic work."
     },
     {
       question: "Do you provide performance tuning services?",

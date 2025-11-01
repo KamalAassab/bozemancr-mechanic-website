@@ -14,7 +14,7 @@
 
 ## 🎯 Overview
 
-**BozemanCR LLC** is a premium, high-performance automotive website built for Montana's premier European automotive specialist. This modern, responsive website showcases professional automotive services with stunning animations, mobile-first design, and optimized performance.
+**BozemanCR LLC** is a premium, high-performance automotive website built for Montana's premier automotive specialist. This modern, responsive website showcases professional automotive services with stunning animations, mobile-first design, and optimized performance.
 
 ### 🌟 Key Features
 
