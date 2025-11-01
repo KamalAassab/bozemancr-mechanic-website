@@ -5,9 +5,9 @@ import { siteConfig } from "../../../../config/site";
 import Link from "next/link";
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export async function generateStaticParams() {
@@ -17,8 +17,9 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
   const service = siteConfig.PRIMARY_SERVICES.find(
-    (s) => s.slug === params.slug
+    (s) => s.slug === slug
   );
 
   if (!service) {
@@ -29,13 +30,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     serviceTitle: service.title,
     description: service.description,
     includeLocation: true,
-    path: `/services/${params.slug}`,
+    path: `/services/${slug}`,
   });
 }
 
-export default function ServicePage({ params }: Props) {
+export default async function ServicePage({ params }: Props) {
+  const { slug } = await params;
   const service = siteConfig.PRIMARY_SERVICES.find(
-    (s) => s.slug === params.slug
+    (s) => s.slug === slug
   );
 
   if (!service) {

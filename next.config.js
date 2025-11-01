@@ -42,8 +42,7 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['framer-motion', 'lucide-react', 'react-icons'],
   },
-  // Optimize production builds
-  swcMinify: true,
+  // Optimize production builds (swcMinify deprecated in Next.js 13+, always enabled)
   compress: true,
   poweredByHeader: false,
 };
